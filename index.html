@@ -112,26 +112,29 @@
 </html>
 <!-- Chatbot Styles -->
 <style>
-  /* Floating Chat Button with Northern Lights Particle Effect */
+  /* Reset particle styles on hover out */
+  #proworks-chat-button:not(:hover) .particle {
+    opacity: 0;
+    animation: none;
+  }
+
+  /* Chat Button */
   #proworks-chat-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: linear-gradient(135deg, #007BFF, #00C6FF);
-    color: white;
+    background: radial-gradient(circle at top left, #00C6FF, #007BFF);
     width: 60px;
     height: 60px;
     border-radius: 50%;
     border: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
     z-index: 9999;
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
     overflow: visible;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease;
   }
 
@@ -139,68 +142,51 @@
     transform: scale(1.1);
   }
 
-  /* The Icon inside the Button */
   #proworks-chat-button .icon {
+    font-size: 24px;
+    color: white;
+    z-index: 1;
     transition: opacity 0.3s ease;
   }
-  
-  /* Hide the icon on hover to reveal the particle effect */
+
   #proworks-chat-button:hover .icon {
     opacity: 0;
   }
 
-  /* Particle Base Style */
   .particle {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle, #ff00cc, #3333ff);
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
+    background: radial-gradient(circle, #00ffcc, #3333ff, #ff66cc);
     opacity: 0;
+    filter: blur(3px);
+    z-index: 0;
+    pointer-events: none;
   }
 
-  /* Animate the particles on hover */
-  #proworks-chat-button:hover .particle {
-    animation: explode 1s forwards, swirl 1s forwards;
-  }
-
-  /* Explosion Animation: moves particles outward and fades them */
-  @keyframes explode {
+  @keyframes burst {
     0% {
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(0, 0) scale(1);
       opacity: 1;
-    }
-    100% {
-      transform: translate(var(--tx), var(--ty)) scale(0.5) rotate(360deg);
-      opacity: 0;
-    }
-  }
-
-  /* Swirl Animation: cycles through hues for a northern lights effect */
-  @keyframes swirl {
-    0% {
       filter: hue-rotate(0deg);
     }
     100% {
+      transform: translate(var(--tx), var(--ty)) scale(0.4) rotate(720deg);
+      opacity: 0;
       filter: hue-rotate(360deg);
     }
   }
 
-  /* Define each particle’s travel direction & delay */
-  #proworks-chat-button .particle:nth-child(1) { --tx: -80px; --ty: -60px; animation-delay: 0s; }
-  #proworks-chat-button .particle:nth-child(2) { --tx: 70px; --ty: -50px; animation-delay: 0.1s; }
-  #proworks-chat-button .particle:nth-child(3) { --tx: 90px; --ty: 10px; animation-delay: 0.2s; }
-  #proworks-chat-button .particle:nth-child(4) { --tx: -70px; --ty: 40px; animation-delay: 0.3s; }
-  #proworks-chat-button .particle:nth-child(5) { --tx: -60px; --ty: 80px; animation-delay: 0.4s; }
-  #proworks-chat-button .particle:nth-child(6) { --tx: 50px; --ty: 80px; animation-delay: 0.5s; }
-  #proworks-chat-button .particle:nth-child(7) { --tx: 80px; --ty: -70px; animation-delay: 0.6s; }
-  #proworks-chat-button .particle:nth-child(8) { --tx: -90px; --ty: -20px; animation-delay: 0.7s; }
-  #proworks-chat-button .particle:nth-child(9) { --tx: 0px;  --ty: -100px; animation-delay: 0.8s; }
-  #proworks-chat-button .particle:nth-child(10) { --tx: 100px; --ty: 0px; animation-delay: 0.9s; }
+  /* Set unique directions and delays for each particle */
+  .particle:nth-child(2) { --tx: -90px; --ty: -60px; animation: burst 1s ease-out forwards; animation-delay: 0s; }
+  .particle:nth-child(3) { --tx: 100px; --ty: -50px; animation: burst 1s ease-out forwards; animation-delay: 0.1s; }
+  .particle:nth-child(4) { --tx: 80px; --ty: 60px; animation: burst 1s ease-out forwards; animation-delay: 0.2s; }
+  .particle:nth-child(5) { --tx: -70px; --ty: 50px; animation: burst 1s ease-out forwards; animation-delay: 0.3s; }
+  .particle:nth-child(6) { --tx: -50px; --ty: -90px; animation: burst 1s ease-out forwards; animation-delay: 0.4s; }
+  .particle:nth-child(7) { --tx: 90px; --ty: 90px; animation: burst 1s ease-out forwards; animation-delay: 0.5s; }
 
-  /* Chat Panel (Slide-Up) Styles */
+  /* Chat Panel */
   #proworks-chat-panel {
     position: fixed;
     bottom: 90px;
@@ -300,11 +286,6 @@
 <!-- Chatbot HTML -->
 <button id="proworks-chat-button">
   <span class="icon">💬</span>
-  <!-- Particle Elements for the Animation -->
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
@@ -399,4 +380,6 @@ Just ask about any of those or type your own question! 😊`;
 
     return "That's a great question! Let me forward it to a specialist who can assist you further. Feel free to drop your email too!";
   }
+</script>
+
 </script>

@@ -110,212 +110,245 @@
     </footer>
 </body>
 </html>
-<!-- Chatbot Styles -->
-<style>
-  /* Chat Button */
-  #proworks-chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: radial-gradient(circle at top left, #00C6FF, #007BFF);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: none;
-    z-index: 9999;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-    animation: pulseGlow 3s infinite;
-    box-shadow: 0 6px 18px rgba(0, 198, 255, 0.4);
-    transition: transform 0.3s ease;
-  }
-
-  @keyframes pulseGlow {
-    0% { box-shadow: 0 0 10px rgba(0, 198, 255, 0.4); }
-    50% { box-shadow: 0 0 25px rgba(0, 198, 255, 0.8); }
-    100% { box-shadow: 0 0 10px rgba(0, 198, 255, 0.4); }
-  }
-
-  #proworks-chat-button:hover {
-    transform: scale(1.1);
-  }
-
-  #proworks-chat-button::before {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border: 2px solid rgba(0,198,255,0.3);
-    border-radius: 50%;
-    animation: spinRing 6s linear infinite;
-    z-index: 0;
-  }
-
-  @keyframes spinRing {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  .icon {
-    font-size: 24px;
-    color: white;
-    z-index: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  .particle {
-    position: absolute;
-    opacity: 0;
-    z-index: 0;
-    pointer-events: none;
-    animation: none;
-  }
-
-  .particle.circle {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #00ffcc, #3333ff, #ff66cc);
-    filter: blur(3px);
-  }
-
-  .particle.triangle {
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 12px solid #ff66cc;
-  }
-
-  @keyframes burst {
-    0% {
-      transform: translate(0, 0) scale(1);
-      opacity: 1;
-      filter: hue-rotate(0deg);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora Chatbot</title>
+  <style>
+    /* === Chat Button Core === */
+    #proworks-chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: radial-gradient(circle at top left, #00C6FF, #007BFF);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      z-index: 9999;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+      transition: transform 0.3s ease;
     }
-    100% {
-      transform: translate(var(--tx), var(--ty)) scale(0.4) rotate(720deg);
+
+    .icon {
+      font-size: 24px;
+      color: white;
+      z-index: 2;
+      transition: opacity 0.3s ease;
+    }
+
+    /* === Outer Glow Ring (Idle / Hover) === */
+    #proworks-chat-button::before {
+      content: '';
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      border: 2px solid rgba(0,198,255,0.25);
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(0,198,255,0.3);
+      transform: scale(0.85);
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    #proworks-chat-button:hover::before {
+      transform: scale(1.2);
+      box-shadow: 0 0 30px rgba(0,198,255,0.7);
+      border-color: rgba(0,198,255,0.5);
+    }
+
+    #proworks-chat-button:hover {
+      transform: scale(1.1);
+    }
+
+    /* === Swirling Aurora Particles === */
+    .swirl {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00ffd9, #1e90ff, #ff66cc);
+      filter: blur(2px);
+      animation: orbit 4s linear infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    .swirl:nth-child(2) { animation-delay: 0s; }
+    .swirl:nth-child(3) { animation-delay: 1s; }
+    .swirl:nth-child(4) { animation-delay: 2s; }
+    .swirl:nth-child(5) { animation-delay: 3s; }
+
+    @keyframes orbit {
+      0% {
+        transform: rotate(0deg) translateX(36px) rotate(0deg);
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg) translateX(36px) rotate(-360deg);
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    /* === Particle Burst (Click Effect) === */
+    .particle {
+      position: absolute;
       opacity: 0;
-      filter: hue-rotate(360deg);
+      z-index: 0;
+      pointer-events: none;
+      animation: none;
     }
-  }
 
-  .particle:nth-child(2) { --tx: -90px; --ty: -60px; }
-  .particle:nth-child(3) { --tx: 100px; --ty: -50px; }
-  .particle:nth-child(4) { --tx: 80px; --ty: 60px; }
-  .particle:nth-child(5) { --tx: -70px; --ty: 50px; }
-  .particle:nth-child(6) { --tx: -50px; --ty: -90px; }
-  .particle:nth-child(7) { --tx: 90px; --ty: 90px; }
+    .particle.circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00ffcc, #3333ff, #ff66cc);
+      filter: blur(3px);
+    }
 
-  /* Chat Panel */
-  #proworks-chat-panel {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 360px;
-    height: 520px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    overflow: hidden;
-    display: none;
-    flex-direction: column;
-    z-index: 9998;
-    font-family: 'Segoe UI', sans-serif;
-  }
+    @keyframes burst {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(0.4) rotate(720deg);
+        opacity: 0;
+        filter: hue-rotate(360deg);
+      }
+    }
 
-  #chat-header {
-    background: linear-gradient(135deg, #007BFF, #00C6FF);
-    color: white;
-    padding: 18px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-  }
+    .particle:nth-child(6) { --tx: -90px; --ty: -60px; }
+    .particle:nth-child(7) { --tx: 100px; --ty: -50px; }
+    .particle:nth-child(8) { --tx: 80px; --ty: 60px; }
+    .particle:nth-child(9) { --tx: -70px; --ty: 50px; }
+    .particle:nth-child(10) { --tx: -50px; --ty: -90px; }
+    .particle:nth-child(11) { --tx: 90px; --ty: 90px; }
 
-  #chat-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    background: #f9f9f9;
-  }
+    /* === Chat Panel === */
+    #proworks-chat-panel {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 360px;
+      height: 520px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      z-index: 9998;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-  .message {
-    margin: 8px 0;
-    line-height: 1.4;
-  }
+    #chat-header {
+      background: linear-gradient(135deg, #007BFF, #00C6FF);
+      color: white;
+      padding: 18px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
 
-  .message.bot {
-    text-align: left;
-  }
+    #chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f9f9f9;
+    }
 
-  .message.user {
-    text-align: right;
-    color: #007BFF;
-    font-weight: 500;
-  }
+    .message {
+      margin: 8px 0;
+      line-height: 1.4;
+    }
 
-  #suggestions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px;
-  }
+    .message.bot {
+      text-align: left;
+    }
 
-  .suggestion-btn {
-    background: #f1f1f1;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 14px;
-    transition: background 0.2s ease;
-  }
+    .message.user {
+      text-align: right;
+      color: #007BFF;
+      font-weight: 500;
+    }
 
-  .suggestion-btn:hover {
-    background: #e0e0e0;
-  }
+    #suggestions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 10px;
+    }
 
-  #chat-input {
-    display: flex;
-    border-top: 1px solid #ddd;
-  }
+    .suggestion-btn {
+      background: #f1f1f1;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      transition: background 0.2s ease;
+    }
 
-  #chat-input input {
-    flex: 1;
-    border: none;
-    padding: 15px;
-    font-size: 14px;
-    outline: none;
-  }
+    .suggestion-btn:hover {
+      background: #e0e0e0;
+    }
 
-  #chat-input button {
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+    #chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
 
-  #chat-input button:hover {
-    background: #005ecb;
-  }
-</style>
+    #chat-input input {
+      flex: 1;
+      border: none;
+      padding: 15px;
+      font-size: 14px;
+      outline: none;
+    }
 
-<!-- Chat Button with Particles -->
+    #chat-input button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #chat-input button:hover {
+      background: #005ecb;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Chat Button -->
 <button id="proworks-chat-button">
   <span class="icon">💬</span>
+
+  <!-- Swirling Particles -->
+  <div class="swirl"></div>
+  <div class="swirl"></div>
+  <div class="swirl"></div>
+  <div class="swirl"></div>
+
+  <!-- Particle Burst -->
   <div class="particle circle"></div>
-  <div class="particle triangle"></div>
   <div class="particle circle"></div>
-  <div class="particle triangle"></div>
   <div class="particle circle"></div>
-  <div class="particle triangle"></div>
+  <div class="particle circle"></div>
+  <div class="particle circle"></div>
+  <div class="particle circle"></div>
 </button>
 
 <!-- Chat Panel -->
@@ -336,7 +369,7 @@
   </div>
 </div>
 
-<!-- Chatbot Script -->
+<!-- Script -->
 <script>
   const chatBtn = document.getElementById('proworks-chat-button');
   const chatPanel = document.getElementById('proworks-chat-panel');
@@ -348,11 +381,11 @@
   chatBtn.addEventListener('click', () => {
     chatPanel.style.display = chatPanel.style.display === 'none' || !chatPanel.style.display ? 'flex' : 'none';
 
-    // Trigger burst animation
+    // Trigger burst
     const particles = chatBtn.querySelectorAll('.particle');
     particles.forEach(p => {
-      p.style.animation = 'none'; // reset
-      p.offsetHeight; // reflow
+      p.style.animation = 'none';
+      p.offsetHeight;
       p.style.animation = 'burst 1s ease-out forwards';
     });
   });
@@ -414,3 +447,6 @@ Just ask about any of those or type your own question! 😊`;
     return "That's a great question! Let me forward it to a specialist who can assist you further. Feel free to drop your email too!";
   }
 </script>
+
+</body>
+</html>

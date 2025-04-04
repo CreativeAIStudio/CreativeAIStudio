@@ -112,6 +112,7 @@
 </html>
 <!-- Chatbot Styles -->
 <style>
+  /* Floating Chat Button with Northern Lights Particle Effect */
   #proworks-chat-button {
     position: fixed;
     bottom: 20px;
@@ -129,14 +130,77 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    overflow: visible;
+    position: relative;
+    transition: transform 0.3s ease;
   }
 
   #proworks-chat-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
   }
 
+  /* The Icon inside the Button */
+  #proworks-chat-button .icon {
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Hide the icon on hover to reveal the particle effect */
+  #proworks-chat-button:hover .icon {
+    opacity: 0;
+  }
+
+  /* Particle Base Style */
+  .particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ff00cc, #3333ff);
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  /* Animate the particles on hover */
+  #proworks-chat-button:hover .particle {
+    animation: explode 1s forwards, swirl 1s forwards;
+  }
+
+  /* Explosion Animation: moves particles outward and fades them */
+  @keyframes explode {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(var(--tx), var(--ty)) scale(0.5) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Swirl Animation: cycles through hues for a northern lights effect */
+  @keyframes swirl {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  /* Define each particle’s travel direction & delay */
+  #proworks-chat-button .particle:nth-child(1) { --tx: -80px; --ty: -60px; animation-delay: 0s; }
+  #proworks-chat-button .particle:nth-child(2) { --tx: 70px; --ty: -50px; animation-delay: 0.1s; }
+  #proworks-chat-button .particle:nth-child(3) { --tx: 90px; --ty: 10px; animation-delay: 0.2s; }
+  #proworks-chat-button .particle:nth-child(4) { --tx: -70px; --ty: 40px; animation-delay: 0.3s; }
+  #proworks-chat-button .particle:nth-child(5) { --tx: -60px; --ty: 80px; animation-delay: 0.4s; }
+  #proworks-chat-button .particle:nth-child(6) { --tx: 50px; --ty: 80px; animation-delay: 0.5s; }
+  #proworks-chat-button .particle:nth-child(7) { --tx: 80px; --ty: -70px; animation-delay: 0.6s; }
+  #proworks-chat-button .particle:nth-child(8) { --tx: -90px; --ty: -20px; animation-delay: 0.7s; }
+  #proworks-chat-button .particle:nth-child(9) { --tx: 0px;  --ty: -100px; animation-delay: 0.8s; }
+  #proworks-chat-button .particle:nth-child(10) { --tx: 100px; --ty: 0px; animation-delay: 0.9s; }
+
+  /* Chat Panel (Slide-Up) Styles */
   #proworks-chat-panel {
     position: fixed;
     bottom: 90px;
@@ -234,7 +298,20 @@
 </style>
 
 <!-- Chatbot HTML -->
-<button id="proworks-chat-button">💬</button>
+<button id="proworks-chat-button">
+  <span class="icon">💬</span>
+  <!-- Particle Elements for the Animation -->
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</button>
 
 <div id="proworks-chat-panel">
   <div id="chat-header">👋 Welcome to ProworksAI</div>

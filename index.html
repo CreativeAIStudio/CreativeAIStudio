@@ -112,144 +112,148 @@
 </html>
 <!-- Chatbot Styles -->
 <style>
-  #chatbot-button {
+  /* Floating Chat Icon */
+  #chatbot-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 14px 18px;
-    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    font-weight: bold;
-    font-size: 16px;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    z-index: 999;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  #chatbot-button:hover {
-    transform: scale(1.1) rotate(1deg);
-    box-shadow: 0 0 15px 4px rgba(0, 123, 255, 0.7);
+  #chatbot-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
   }
 
+  #chatbot-icon::after {
+    content: '💬';
+    font-size: 24px;
+    color: white;
+  }
+
+  /* Chat Window */
   #chatbot-window {
     position: fixed;
-    bottom: 80px;
+    bottom: 90px;
     right: 20px;
-    width: 320px;
-    height: 460px;
-    background: #ffffff;
-    border: 1px solid #007BFF;
-    border-radius: 10px;
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     display: none;
     flex-direction: column;
-    z-index: 999;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
+    z-index: 1000;
   }
 
-  #chat-header {
-    background: #007BFF;
+  /* Chat Header */
+  #chatbot-header {
+    background-color: #007BFF;
     color: white;
-    padding: 12px;
+    padding: 15px;
     text-align: center;
+    font-size: 18px;
     font-weight: bold;
-    font-size: 16px;
   }
 
-  #chat-messages {
+  /* Chat Messages */
+  #chatbot-messages {
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     overflow-y: auto;
+    font-family: Arial, sans-serif;
     font-size: 14px;
+    color: #333;
   }
 
-  #chat-input {
+  /* Chat Input */
+  #chatbot-input {
     display: flex;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #ddd;
   }
 
-  #chat-input input {
+  #chatbot-input input {
     flex: 1;
     border: none;
-    padding: 12px;
+    padding: 15px;
     font-size: 14px;
     outline: none;
   }
 
-  #chat-input button {
-    background: #007BFF;
+  #chatbot-input button {
+    background-color: #007BFF;
     color: white;
     border: none;
-    padding: 12px 16px;
+    padding: 15px;
     cursor: pointer;
+    font-size: 14px;
     font-weight: bold;
+  }
+
+  #chatbot-input button:hover {
+    background-color: #0056b3;
   }
 </style>
 
 <!-- Chatbot HTML -->
-<button id="chatbot-button">✨ Chat with us</button>
+<div id="chatbot-icon"></div>
 
 <div id="chatbot-window">
-  <div id="chat-header">🤖 Ask Me Anything!</div>
-  <div id="chat-messages">
-    <div><strong>Bot:</strong> Hey there! 👋 Need help with AI services, automating leads, or FAQs? I'm your digital buddy. How can I help today?</div>
+  <div id="chatbot-header">Chat with Us</div>
+  <div id="chatbot-messages">
+    <div><strong>Bot:</strong> Hi there! How can I assist you today?</div>
   </div>
-  <div id="chat-input">
-    <input type="text" placeholder="Type your question..." />
+  <div id="chatbot-input">
+    <input type="text" placeholder="Type your message here..." />
     <button>Send</button>
   </div>
 </div>
 
 <!-- Chatbot Script -->
 <script>
-  const chatBtn = document.getElementById('chatbot-button');
-  const chatWindow = document.getElementById('chatbot-window');
-  const chatMessages = document.getElementById('chat-messages');
-  const inputBox = document.querySelector('#chat-input input');
-  const sendBtn = document.querySelector('#chat-input button');
+  const chatbotIcon = document.getElementById('chatbot-icon');
+  const chatbotWindow = document.getElementById('chatbot-window');
+  const chatbotMessages = document.getElementById('chatbot-messages');
+  const chatbotInput = document.querySelector('#chatbot-input input');
+  const chatbotSend = document.querySelector('#chatbot-input button');
 
-  chatBtn.onclick = () => {
-    chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
-  };
-
-  sendBtn.onclick = () => {
-    const userMessage = inputBox.value.trim();
-    if (!userMessage) return;
-
-    addMessage('You', userMessage);
-    inputBox.value = '';
-
-    // Simulate AI response
-    setTimeout(() => {
-      const response = getAIResponse(userMessage);
-      addMessage('Bot', response);
-    }, 800);
-  };
-
-  function addMessage(sender, text) {
-    const message = document.createElement('div');
-    message.innerHTML = `<strong>${sender}:</strong> ${text}`;
-    chatMessages.appendChild(message);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function getAIResponse(message) {
-    message = message.toLowerCase();
-
-    if (message.includes('book') || message.includes('appointment')) {
-      return "Sure thing! Just tell me a date and time, and I’ll pencil you in. 📅";
-    } else if (message.includes('services') || message.includes('offer')) {
-      return "We help businesses like yours with AI-powered lead generation, chatbot automation, and FAQ handling. Want a quick breakdown?";
-    } else if (message.includes('contact') || message.includes('email')) {
-      return "I can take your contact details and pass them to the team. What’s the best email or phone number to reach you at?";
-    } else if (message.includes('faq') || message.includes('questions')) {
-      return "Hit me with your questions! I’m packed with answers. 😄";
+  // Toggle chat window
+  chatbotIcon.addEventListener('click', () => {
+    if (chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '') {
+      chatbotWindow.style.display = 'flex';
     } else {
-      return "That’s interesting! I’ll make sure someone follows up with you if needed. Want to leave your email just in case?";
+      chatbotWindow.style.display = 'none';
     }
+  });
+
+  // Send message
+  chatbotSend.addEventListener('click', () => {
+    const userMessage = chatbotInput.value.trim();
+    if (userMessage) {
+      addMessage('You', userMessage);
+      chatbotInput.value = '';
+      setTimeout(() => {
+        addMessage('Bot', 'Thank you for your message. We will get back to you shortly.');
+      }, 1000);
+    }
+  });
+
+  // Add message to chat
+  function addMessage(sender, message) {
+    const messageElement = document.createElement('div');
+    messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    chatbotMessages.appendChild(messageElement);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
   }
 </script>

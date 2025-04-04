@@ -116,59 +116,90 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #4A90E2;
+    background: #007BFF;
     color: white;
     border: none;
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-radius: 50px;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
     z-index: 999;
   }
+
+  #chatbot-button:hover {
+    transform: scale(1.1) rotate(1deg);
+    box-shadow: 0 0 15px 4px rgba(0, 123, 255, 0.7);
+  }
+
   #chatbot-window {
     position: fixed;
-    bottom: 70px;
+    bottom: 80px;
     right: 20px;
-    width: 300px;
-    height: 400px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    width: 320px;
+    height: 460px;
+    background: #ffffff;
+    border: 1px solid #007BFF;
+    border-radius: 10px;
     display: none;
     flex-direction: column;
     z-index: 999;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
   }
+
+  #chat-header {
+    background: #007BFF;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
   #chat-messages {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
-    font-family: sans-serif;
     font-size: 14px;
   }
+
   #chat-input {
     display: flex;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #eee;
   }
+
   #chat-input input {
     flex: 1;
     border: none;
-    padding: 10px;
+    padding: 12px;
+    font-size: 14px;
     outline: none;
   }
+
   #chat-input button {
-    background: #4A90E2;
+    background: #007BFF;
     color: white;
     border: none;
-    padding: 10px 16px;
+    padding: 12px 16px;
     cursor: pointer;
+    font-weight: bold;
   }
 </style>
 
 <!-- Chatbot HTML -->
-<button id="chatbot-button">Chat</button>
+<button id="chatbot-button">✨ Chat with us</button>
+
 <div id="chatbot-window">
-  <div id="chat-messages"></div>
+  <div id="chat-header">🤖 Ask Me Anything!</div>
+  <div id="chat-messages">
+    <div><strong>Bot:</strong> Hey there! 👋 Need help with AI services, automating leads, or FAQs? I'm your digital buddy. How can I help today?</div>
+  </div>
   <div id="chat-input">
-    <input type="text" placeholder="Ask me something..." />
+    <input type="text" placeholder="Type your question..." />
     <button>Send</button>
   </div>
 </div>
@@ -187,14 +218,16 @@
 
   sendBtn.onclick = () => {
     const userMessage = inputBox.value.trim();
-    if (userMessage) {
-      addMessage('You', userMessage);
-      inputBox.value = '';
-      // Placeholder bot response
-      setTimeout(() => {
-        addMessage('Bot', 'Thanks for your message! We\'ll get back to you shortly.');
-      }, 500);
-    }
+    if (!userMessage) return;
+
+    addMessage('You', userMessage);
+    inputBox.value = '';
+
+    // Simulate AI response
+    setTimeout(() => {
+      const response = getAIResponse(userMessage);
+      addMessage('Bot', response);
+    }, 800);
   };
 
   function addMessage(sender, text) {
@@ -202,5 +235,21 @@
     message.innerHTML = `<strong>${sender}:</strong> ${text}`;
     chatMessages.appendChild(message);
     chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function getAIResponse(message) {
+    message = message.toLowerCase();
+
+    if (message.includes('book') || message.includes('appointment')) {
+      return "Sure thing! Just tell me a date and time, and I’ll pencil you in. 📅";
+    } else if (message.includes('services') || message.includes('offer')) {
+      return "We help businesses like yours with AI-powered lead generation, chatbot automation, and FAQ handling. Want a quick breakdown?";
+    } else if (message.includes('contact') || message.includes('email')) {
+      return "I can take your contact details and pass them to the team. What’s the best email or phone number to reach you at?";
+    } else if (message.includes('faq') || message.includes('questions')) {
+      return "Hit me with your questions! I’m packed with answers. 😄";
+    } else {
+      return "That’s interesting! I’ll make sure someone follows up with you if needed. Want to leave your email just in case?";
+    }
   }
 </script>

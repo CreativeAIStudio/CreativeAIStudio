@@ -112,12 +112,6 @@
 </html>
 <!-- Chatbot Styles -->
 <style>
-  /* Reset particle styles on hover out */
-  #proworks-chat-button:not(:hover) .particle {
-    opacity: 0;
-    animation: none;
-  }
-
   /* Chat Button */
   #proworks-chat-button {
     position: fixed;
@@ -128,41 +122,72 @@
     height: 60px;
     border-radius: 50%;
     border: none;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
     z-index: 9999;
     cursor: pointer;
-    overflow: visible;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+    animation: pulseGlow 3s infinite;
+    box-shadow: 0 6px 18px rgba(0, 198, 255, 0.4);
     transition: transform 0.3s ease;
+  }
+
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(0, 198, 255, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(0, 198, 255, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(0, 198, 255, 0.4); }
   }
 
   #proworks-chat-button:hover {
     transform: scale(1.1);
   }
 
-  #proworks-chat-button .icon {
+  #proworks-chat-button::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgba(0,198,255,0.3);
+    border-radius: 50%;
+    animation: spinRing 6s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes spinRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .icon {
     font-size: 24px;
     color: white;
     z-index: 1;
     transition: opacity 0.3s ease;
   }
 
-  #proworks-chat-button:hover .icon {
-    opacity: 0;
-  }
-
   .particle {
     position: absolute;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    animation: none;
+  }
+
+  .particle.circle {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background: radial-gradient(circle, #00ffcc, #3333ff, #ff66cc);
-    opacity: 0;
     filter: blur(3px);
-    z-index: 0;
-    pointer-events: none;
+  }
+
+  .particle.triangle {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid #ff66cc;
   }
 
   @keyframes burst {
@@ -178,13 +203,12 @@
     }
   }
 
-  /* Set unique directions and delays for each particle */
-  .particle:nth-child(2) { --tx: -90px; --ty: -60px; animation: burst 1s ease-out forwards; animation-delay: 0s; }
-  .particle:nth-child(3) { --tx: 100px; --ty: -50px; animation: burst 1s ease-out forwards; animation-delay: 0.1s; }
-  .particle:nth-child(4) { --tx: 80px; --ty: 60px; animation: burst 1s ease-out forwards; animation-delay: 0.2s; }
-  .particle:nth-child(5) { --tx: -70px; --ty: 50px; animation: burst 1s ease-out forwards; animation-delay: 0.3s; }
-  .particle:nth-child(6) { --tx: -50px; --ty: -90px; animation: burst 1s ease-out forwards; animation-delay: 0.4s; }
-  .particle:nth-child(7) { --tx: 90px; --ty: 90px; animation: burst 1s ease-out forwards; animation-delay: 0.5s; }
+  .particle:nth-child(2) { --tx: -90px; --ty: -60px; }
+  .particle:nth-child(3) { --tx: 100px; --ty: -50px; }
+  .particle:nth-child(4) { --tx: 80px; --ty: 60px; }
+  .particle:nth-child(5) { --tx: -70px; --ty: 50px; }
+  .particle:nth-child(6) { --tx: -50px; --ty: -90px; }
+  .particle:nth-child(7) { --tx: 90px; --ty: 90px; }
 
   /* Chat Panel */
   #proworks-chat-panel {
@@ -283,17 +307,18 @@
   }
 </style>
 
-<!-- Chatbot HTML -->
+<!-- Chat Button with Particles -->
 <button id="proworks-chat-button">
   <span class="icon">💬</span>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
+  <div class="particle circle"></div>
+  <div class="particle triangle"></div>
+  <div class="particle circle"></div>
+  <div class="particle triangle"></div>
+  <div class="particle circle"></div>
+  <div class="particle triangle"></div>
 </button>
 
+<!-- Chat Panel -->
 <div id="proworks-chat-panel">
   <div id="chat-header">👋 Welcome to ProworksAI</div>
   <div id="chat-messages">
@@ -322,6 +347,14 @@
 
   chatBtn.addEventListener('click', () => {
     chatPanel.style.display = chatPanel.style.display === 'none' || !chatPanel.style.display ? 'flex' : 'none';
+
+    // Trigger burst animation
+    const particles = chatBtn.querySelectorAll('.particle');
+    particles.forEach(p => {
+      p.style.animation = 'none'; // reset
+      p.offsetHeight; // reflow
+      p.style.animation = 'burst 1s ease-out forwards';
+    });
   });
 
   sendBtn.addEventListener('click', () => {
@@ -380,6 +413,4 @@ Just ask about any of those or type your own question! 😊`;
 
     return "That's a great question! Let me forward it to a specialist who can assist you further. Feel free to drop your email too!";
   }
-</script>
-
 </script>

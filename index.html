@@ -3,84 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PipePro Plumbing | Fast, Friendly, Local</title>
+  <title>PipePro Plumbing | Reliable & Professional Services</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
+      background-color: #f9f9f9;
+      color: #333;
     }
 
     header {
-      background: #0b5b8e;
-      color: white;
-      padding: 1.5rem;
+      background-color: #004080;
+      color: #fff;
+      padding: 20px 0;
       text-align: center;
+    }
+
+    nav {
+      background-color: #0066cc;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .hero {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
-      padding: 2rem;
+      justify-content: center;
+      padding: 40px 20px;
+      background-color: #e6f2ff;
     }
 
     .hero img {
       max-width: 100%;
-      border-radius: 12px;
-      margin-bottom: 1rem;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px;
     }
 
-    .chatbot-button {
+    .hero-text {
+      max-width: 500px;
+      margin: 20px;
+    }
+
+    .hero-text h2 {
+      color: #004080;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #004080;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .services, .testimonials {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .services h3, .testimonials h3 {
+      color: #004080;
+      margin-bottom: 20px;
+    }
+
+    .service-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service-item {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 10px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .testimonial {
+      max-width: 600px;
+      margin: 20px auto;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #004080;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    /* Chatbot Button */
+    #chatbot-button {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: #0b5b8e;
-      color: white;
-      padding: 1rem;
+      background-color: #0066cc;
+      color: #fff;
+      padding: 15px;
       border-radius: 50%;
-      font-size: 1.5rem;
+      font-size: 24px;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
     }
 
-    .chatbot-button.hover {
+    #chatbot-button:hover {
       transform: rotate(360deg) scale(1.2);
-      background: #0b8e5b;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      background-color: #004080;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .service-list {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>PipePro Plumbing</h1>
-    <p>Fast, friendly plumbing services for your home or business</p>
+    <p>Your Trusted Plumbing Experts</p>
   </header>
 
-  <main>
-    <section class="hero">
-      <img src="https://source.unsplash.com/featured/?plumber,tools" alt="Plumber at work">
-      <div class="content">
-        <h2>Need a hand? We've got the wrench.</h2>
-        <p>We fix leaks, install water heaters, and make your pipes happy again.</p>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <img src="https://source.unsplash.com/600x400/?plumber" alt="Plumber at work">
+    <div class="hero-text">
+      <h2>Professional Plumbing Services</h2>
+      <p>From leaky faucets to full installations, PipePro Plumbing offers reliable and efficient solutions for all your plumbing needs.</p>
+      <a href="#contact" class="cta-button">Schedule a Service</a>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <h3>Our Services</h3>
+    <div class="service-list">
+      <div class="service-item">
+        <h4>Emergency Repairs</h4>
+        <p>24/7 emergency plumbing services to address urgent issues promptly.</p>
       </div>
-    </section>
-  </main>
+      <div class="service-item">
+        <h4>Drain Cleaning</h4>
+        <p>Effective solutions for clogged drains and sewer lines.</p>
+      </div>
+      <div class="service-item">
+        <h4>Water Heater Installation</h4>
+        <p>Professional installation and maintenance of water heating systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <h3>What Our Clients Say</h3>
+    <div class="testimonial">
+      "PipePro Plumbing provided excellent service. The technician was punctual, professional, and resolved our issue quickly. Highly recommended!"
+      <br><br>
+      - Alex R.
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>Contact Us: (123) 456-7890 | info@pipeproplumbing.com</p>
+    <p>&copy; 2025 PipePro Plumbing. All rights reserved.</p>
+  </footer>
 
   <!-- Chatbot Floating Button -->
-  <div id="chatbot-button" class="chatbot-button">💬</div>
+  <div id="chatbot-button" title="Chat with us!">💬</div>
 
   <script>
     const btn = document.getElementById('chatbot-button');
-    btn.addEventListener('mouseenter', () => {
-      btn.classList.add('hover');
-    });
-    btn.addEventListener('mouseleave', () => {
-      btn.classList.remove('hover');
-    });
     btn.addEventListener('click', () => {
-      alert('Launching AI Assistant for PipePro Plumbing...'); // Placeholder for chatbot integration
+      alert('Launching PipePro AI Assistant...'); // Placeholder for your chatbot integration
     });
   </script>
 </body>

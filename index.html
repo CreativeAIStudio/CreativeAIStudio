@@ -1,452 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CreativeAI Studio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-50 font-sans">
-    <header class="bg-blue-600 text-white py-4">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <h1 class="text-2xl font-bold">CreativeAI Studio</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="#services" class="hover:underline">Services</a></li>
-                    <li><a href="#pricing" class="hover:underline">Pricing</a></li>
-                    <li><a href="#contact" class="hover:underline">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="bg-white py-16 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-4">Revolutionizing Content Creation with AI</h2>
-            <p class="text-gray-600 text-lg mb-6">High-quality content, designs, and chatbots tailored to your needs—all powered by cutting-edge AI technology.</p>
-            <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-blue-700">Get Started</a>
-        </div>
-    </section>
-
-    <section id="services" class="bg-gray-100 py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <h3 class="text-xl font-bold mb-2">AI-Generated Content</h3>
-                    <p class="text-gray-600">Get blogs, articles, and social media posts crafted by AI.</p>
-                </div>
-                <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <h3 class="text-xl font-bold mb-2">AI Design Services</h3>
-                    <p class="text-gray-600">Logos, branding, and marketing materials designed seamlessly.</p>
-                </div>
-                <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <h3 class="text-xl font-bold mb-2">Personalized Chatbots</h3>
-                    <p class="text-gray-600">Automate customer support with AI-driven chatbots.</p>
-                </div>
-                <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <h3 class="text-xl font-bold mb-2">Video & Audio Editing</h3>
-                    <p class="text-gray-600">Quick and professional edits for podcasts and social media.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="bg-white py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Pricing Plans</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="border rounded-lg shadow-md p-6 text-center">
-                    <h3 class="text-xl font-bold mb-4">Basic</h3>
-                    <p class="text-gray-600 mb-4">Perfect for individuals and small projects.</p>
-                    <p class="text-2xl font-bold mb-4">
-                        $19<span class="text-lg">/month</span>
-                    </p>
-                    <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</a>
-                </div>
-                <div class="border rounded-lg shadow-md p-6 text-center bg-gray-100">
-                    <h3 class="text-xl font-bold mb-4">Premium</h3>
-                    <p class="text-gray-600 mb-4">Unlimited content and priority support.</p>
-                    <p class="text-2xl font-bold mb-4">
-                        $49<span class="text-lg">/month</span>
-                    </p>
-                    <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</a>
-                </div>
-                <div class="border rounded-lg shadow-md p-6 text-center">
-                    <h3 class="text-xl font-bold mb-4">Enterprise</h3>
-                    <p class="text-gray-600 mb-4">Custom solutions for large-scale needs.</p>
-                    <p class="text-2xl font-bold mb-4">Contact Us</p>
-                    <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="bg-gray-100 py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
-            <form class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <div class="mb-4">
-                    <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-                </div>
-                <div class="mb-4">
-                    <label for="message" class="block text-gray-700 font-bold mb-2">Message</label>
-                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
-                </div>
-                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-blue-700">Submit</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="bg-blue-600 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2025 CreativeAI Studio. All Rights Reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aurora Chatbot</title>
+  <title>PipePro Plumbing | Fast, Friendly, Local</title>
   <style>
-    /* === Chat Button Core === */
-    #proworks-chat-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: radial-gradient(circle at top left, #00C6FF, #007BFF);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: none;
-      z-index: 9999;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: visible;
-      transition: transform 0.3s ease;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
     }
 
-    .icon {
-      font-size: 24px;
+    header {
+      background: #0b5b8e;
       color: white;
-      z-index: 2;
-      transition: opacity 0.3s ease;
-    }
-
-    /* === Outer Glow Ring (Idle / Hover) === */
-    #proworks-chat-button::before {
-      content: '';
-      position: absolute;
-      width: 72px;
-      height: 72px;
-      border: 2px solid rgba(0,198,255,0.25);
-      border-radius: 50%;
-      box-shadow: 0 0 18px rgba(0,198,255,0.3);
-      transform: scale(0.85);
-      transition: all 0.4s ease;
-      z-index: 0;
-    }
-
-    #proworks-chat-button:hover::before {
-      transform: scale(1.2);
-      box-shadow: 0 0 30px rgba(0,198,255,0.7);
-      border-color: rgba(0,198,255,0.5);
-    }
-
-    #proworks-chat-button:hover {
-      transform: scale(1.1);
-    }
-
-    /* === Swirling Aurora Particles === */
-    .swirl {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00ffd9, #1e90ff, #ff66cc);
-      filter: blur(2px);
-      animation: orbit 4s linear infinite;
-      opacity: 0.8;
-      z-index: 1;
-    }
-
-    .swirl:nth-child(2) { animation-delay: 0s; }
-    .swirl:nth-child(3) { animation-delay: 1s; }
-    .swirl:nth-child(4) { animation-delay: 2s; }
-    .swirl:nth-child(5) { animation-delay: 3s; }
-
-    @keyframes orbit {
-      0% {
-        transform: rotate(0deg) translateX(36px) rotate(0deg);
-        filter: hue-rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg) translateX(36px) rotate(-360deg);
-        filter: hue-rotate(360deg);
-      }
-    }
-
-    /* === Particle Burst (Click Effect) === */
-    .particle {
-      position: absolute;
-      opacity: 0;
-      z-index: 0;
-      pointer-events: none;
-      animation: none;
-    }
-
-    .particle.circle {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00ffcc, #3333ff, #ff66cc);
-      filter: blur(3px);
-    }
-
-    @keyframes burst {
-      0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-        filter: hue-rotate(0deg);
-      }
-      100% {
-        transform: translate(var(--tx), var(--ty)) scale(0.4) rotate(720deg);
-        opacity: 0;
-        filter: hue-rotate(360deg);
-      }
-    }
-
-    .particle:nth-child(6) { --tx: -90px; --ty: -60px; }
-    .particle:nth-child(7) { --tx: 100px; --ty: -50px; }
-    .particle:nth-child(8) { --tx: 80px; --ty: 60px; }
-    .particle:nth-child(9) { --tx: -70px; --ty: 50px; }
-    .particle:nth-child(10) { --tx: -50px; --ty: -90px; }
-    .particle:nth-child(11) { --tx: 90px; --ty: 90px; }
-
-    /* === Chat Panel === */
-    #proworks-chat-panel {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 360px;
-      height: 520px;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-      overflow: hidden;
-      display: none;
-      flex-direction: column;
-      z-index: 9998;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    #chat-header {
-      background: linear-gradient(135deg, #007BFF, #00C6FF);
-      color: white;
-      padding: 18px;
+      padding: 1.5rem;
       text-align: center;
-      font-size: 16px;
-      font-weight: bold;
     }
 
-    #chat-messages {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-      background: #f9f9f9;
-    }
-
-    .message {
-      margin: 8px 0;
-      line-height: 1.4;
-    }
-
-    .message.bot {
-      text-align: left;
-    }
-
-    .message.user {
-      text-align: right;
-      color: #007BFF;
-      font-weight: 500;
-    }
-
-    #suggestions {
+    .hero {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 10px;
+      align-items: center;
+      padding: 2rem;
     }
 
-    .suggestion-btn {
-      background: #f1f1f1;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: left;
-      font-size: 14px;
-      transition: background 0.2s ease;
+    .hero img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
     }
 
-    .suggestion-btn:hover {
-      background: #e0e0e0;
-    }
-
-    #chat-input {
-      display: flex;
-      border-top: 1px solid #ddd;
-    }
-
-    #chat-input input {
-      flex: 1;
-      border: none;
-      padding: 15px;
-      font-size: 14px;
-      outline: none;
-    }
-
-    #chat-input button {
-      background: #007BFF;
+    .chatbot-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #0b5b8e;
       color: white;
-      border: none;
-      padding: 15px 20px;
+      padding: 1rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
       cursor: pointer;
-      font-weight: bold;
+      transition: all 0.3s ease-in-out;
     }
 
-    #chat-input button:hover {
-      background: #005ecb;
+    .chatbot-button.hover {
+      transform: rotate(360deg) scale(1.2);
+      background: #0b8e5b;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>PipePro Plumbing</h1>
+    <p>Fast, friendly plumbing services for your home or business</p>
+  </header>
 
-<!-- Chat Button -->
-<button id="proworks-chat-button">
-  <span class="icon">💬</span>
+  <main>
+    <section class="hero">
+      <img src="https://source.unsplash.com/featured/?plumber,tools" alt="Plumber at work">
+      <div class="content">
+        <h2>Need a hand? We've got the wrench.</h2>
+        <p>We fix leaks, install water heaters, and make your pipes happy again.</p>
+      </div>
+    </section>
+  </main>
 
-  <!-- Swirling Particles -->
-  <div class="swirl"></div>
-  <div class="swirl"></div>
-  <div class="swirl"></div>
-  <div class="swirl"></div>
+  <!-- Chatbot Floating Button -->
+  <div id="chatbot-button" class="chatbot-button">💬</div>
 
-  <!-- Particle Burst -->
-  <div class="particle circle"></div>
-  <div class="particle circle"></div>
-  <div class="particle circle"></div>
-  <div class="particle circle"></div>
-  <div class="particle circle"></div>
-  <div class="particle circle"></div>
-</button>
-
-<!-- Chat Panel -->
-<div id="proworks-chat-panel">
-  <div id="chat-header">👋 Welcome to ProworksAI</div>
-  <div id="chat-messages">
-    <div class="message bot">Hi there! 👋 I’m your assistant from ProworksAI. Need help automating leads, answering FAQs, or integrating AI? Just ask away!</div>
-  </div>
-  <div id="suggestions">
-    <button class="suggestion-btn">What AI services do you offer?</button>
-    <button class="suggestion-btn">Can I automate lead collection?</button>
-    <button class="suggestion-btn">How do I get started?</button>
-    <button class="suggestion-btn">What questions can you answer?</button>
-  </div>
-  <div id="chat-input">
-    <input type="text" placeholder="Type your message..." />
-    <button>Send</button>
-  </div>
-</div>
-
-<!-- Script -->
-<script>
-  const chatBtn = document.getElementById('proworks-chat-button');
-  const chatPanel = document.getElementById('proworks-chat-panel');
-  const chatMessages = document.getElementById('chat-messages');
-  const inputField = document.querySelector('#chat-input input');
-  const sendBtn = document.querySelector('#chat-input button');
-  const suggestionBtns = document.querySelectorAll('.suggestion-btn');
-
-  chatBtn.addEventListener('click', () => {
-    chatPanel.style.display = chatPanel.style.display === 'none' || !chatPanel.style.display ? 'flex' : 'none';
-
-    // Trigger burst
-    const particles = chatBtn.querySelectorAll('.particle');
-    particles.forEach(p => {
-      p.style.animation = 'none';
-      p.offsetHeight;
-      p.style.animation = 'burst 1s ease-out forwards';
+  <script>
+    const btn = document.getElementById('chatbot-button');
+    btn.addEventListener('mouseenter', () => {
+      btn.classList.add('hover');
     });
-  });
-
-  sendBtn.addEventListener('click', () => {
-    handleUserMessage(inputField.value.trim());
-  });
-
-  suggestionBtns.forEach(btn => {
+    btn.addEventListener('mouseleave', () => {
+      btn.classList.remove('hover');
+    });
     btn.addEventListener('click', () => {
-      handleUserMessage(btn.textContent);
+      alert('Launching AI Assistant for PipePro Plumbing...'); // Placeholder for chatbot integration
     });
-  });
-
-  function handleUserMessage(message) {
-    if (!message) return;
-    addMessage('user', message);
-    inputField.value = '';
-    setTimeout(() => {
-      addMessage('bot', getBotResponse(message));
-    }, 800);
-  }
-
-  function addMessage(sender, text) {
-    const msg = document.createElement('div');
-    msg.classList.add('message', sender);
-    msg.textContent = text;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function getBotResponse(msg) {
-    const text = msg.toLowerCase();
-
-    if (text.includes('what questions can you answer') || text.includes('what can you do')) {
-      return `Great question! Here’s what I can help you with:
-
-• Explain our AI services  
-• Automate your lead generation  
-• Show how to handle FAQs with bots  
-• Guide you through getting started  
-• Help you book a consultation  
-• Collect your contact info for follow-up  
-• Route your request to our team  
-
-Just ask about any of those or type your own question! 😊`;
-    }
-
-    if (text.includes('services')) {
-      return "We offer AI solutions like chatbot automation, smart lead capture, FAQ handling, and more — tailored for your business.";
-    }
-    if (text.includes('lead')) {
-      return "Absolutely! We can set up AI to collect, qualify, and even route leads straight to your CRM or inbox.";
-    }
-    if (text.includes('start') || text.includes('getting started')) {
-      return "Getting started is easy! We’ll walk you through a short onboarding to understand your business needs.";
-    }
-
-    return "That's a great question! Let me forward it to a specialist who can assist you further. Feel free to drop your email too!";
-  }
-</script>
-
+  </script>
 </body>
 </html>

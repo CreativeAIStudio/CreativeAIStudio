@@ -24,7 +24,6 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-    /* Navigation Bar */
     .navbar {
       background-color: #fff;
       border-bottom: 1px solid #ccc;
@@ -60,7 +59,6 @@
     .navbar .nav-links a:hover {
       color: #c0392b;
     }
-    /* Hero Section */
     .hero {
       background-image: url('https://images.unsplash.com/photo-1601924582971-c3d4d4d2f38a');
       background-size: cover;
@@ -86,7 +84,6 @@
       color: #333;
       margin-bottom: 0.5rem;
     }
-    /* Section Styles */
     section {
       padding: 4rem 2rem;
     }
@@ -124,10 +121,27 @@
     .contact-section a:hover {
       text-decoration: underline;
     }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      height: 200px;
+    }
+    footer {
+      background-color: #c0392b;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="container">
       <a href="#" class="logo">Upper Crust Pizza Café</a>
@@ -139,7 +153,6 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <h1>Authentic NY Style Pizza</h1>
@@ -148,15 +161,102 @@
     </div>
   </section>
 
-  <!-- Menu Section -->
+  <!-- Full menu restored from earlier truncation (you can paste your full menu HTML back here) -->
   <section id="menu" class="menu-section">
     <div class="container">
       <h2>Our Menu</h2>
-      <!-- Menu items go here (use previous menu content HTML) -->
+      <!-- Full menu items -->
+<h3>Specialty Pizzas</h3>
+<div class="menu-category">
+  <div class="menu-item">
+    <h4>Market Street Pie</h4>
+    <p>Our own hand-tossed traditional NY Style Cheese Pizza. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">10" - $10.00 | 14" - $16.00 | 18" - $18.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Sicilian Pizza</h4>
+    <p>A thick rectangular pan pizza. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">One Size - $21.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Cracker Thin Crust Pizza</h4>
+    <p>Well Done, Cut into Squares, Sauced to Edge/No Crust. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">One Size - $18.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Double Crust Stuffed Pizza</h4>
+    <p>Stuffed with Mozzarella Cheese and Pizza Sauce.</p>
+    <p class="price">14" - $18.50 | 18" - $22.50</p>
+  </div>
+  <div class="menu-item">
+    <h4>Garden Pizza</h4>
+    <p>Mushrooms, Onions, Peppers, Black Olives, Tomatoes. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Deli</h4>
+    <p>Pepperoni, Sausage, Ham, Meatball. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Meaty Combo</h4>
+    <p>Pepperoni, Sausage, Green Peppers, Red Onions. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Works</h4>
+    <p>Pepperoni, Sausage, Ham, Meatball, Mushrooms, Onions, Peppers, Olives, Tomatoes. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">10" - $14.00 | 14" - $23.00 | 18" - $27.50</p>
+  </div>
+  <div class="menu-item">
+    <h4>White</h4>
+    <p>Ricotta, Mozzarella Cheese.</p>
+    <p class="price">10" - $12.50 | 14" - $18.50 | 18" - $24.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Diego</h4>
+    <p>Ricotta, Fresh Tomatoes, Spinach. Mozzarella Cheese, Pizza Sauce.</p>
+    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Hawaiian</h4>
+    <p>Ham, Bacon, Pineapple. Pizza Sauce.</p>
+    <p class="price">10" - $12.50 | 14" - $18.50 | 18" - $24.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>BBQ Chicken</h4>
+    <p>Roasted Chicken, Onion, Cheddar, Mozzarella Cheese, BBQ Sauce.</p>
+    <p class="price">10" - $13.00 | 14" - $18.50 | 18" - $24.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Blue Cheese Buffalo Chicken</h4>
+    <p>Crumbled Blue Cheese, Roasted Chicken, Buffalo Hot Sauce, Blue Cheese Dressing Base, Mozzarella Cheese.</p>
+    <p class="price">10" - $14.00 | 14" - $22.00 | 18" - $26.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Ranch Buffalo Chicken</h4>
+    <p>Roasted Chicken, Buffalo Hot Sauce, Ranch Base, Mozzarella Cheese.</p>
+    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Margherita</h4>
+    <p>Olive Oil, Garlic, Fresh Tomatoes, Basil, Mozzarella Cheese.</p>
+    <p class="price">10" - $12.00 | 14" - $20.00 | 18" - $24.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Teriyaki Chicken</h4>
+    <p>Sweet Onion, Roasted Chicken Breast, Mozzarella Cheese.</p>
+    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+  </div>
+  <div class="menu-item">
+    <h4>Alfredo Chicken</h4>
+    <p>Roasted Chicken, Alfredo Sauce, Mozzarella Cheese.</p>
+    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+  </div>
+</div>
     </div>
   </section>
 
-  <!-- About Section -->
   <section id="about" class="about-section">
     <div class="container">
       <h2>About Us</h2>
@@ -173,7 +273,18 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1594007654729-e6053d2cfef3" alt="Pepperoni Pizza">
+        <img src="https://images.unsplash.com/photo-1548365328-13b222006d1b" alt="Pizza Oven">
+        <img src="https://images.unsplash.com/photo-1594007654820-863c2d9e26f3" alt="Cheesy Pizza Slice">
+        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f" alt="Pizzeria Interior">
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="contact-section">
     <div class="container">
       <h2>Contact</h2>
@@ -193,5 +304,9 @@
       </p>
     </div>
   </section>
+
+  <footer>
+    <p>&copy; 2024 Upper Crust Pizza Café. All rights reserved.</p>
+  </footer>
 </body>
 </html>

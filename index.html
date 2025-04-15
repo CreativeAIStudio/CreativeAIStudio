@@ -3,96 +3,337 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upper Crust</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@400;700&display=swap');
-
-    body {
-      margin: 0;
-      font-family: 'Rubik', sans-serif;
-      background-color: #1a1a1a;
-      color: #fff;
-      background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-    }
-    header {
-      background: linear-gradient(135deg, #8B0000, #550000);
-      padding: 2rem;
-      text-align: center;
-      font-size: 3rem;
-      letter-spacing: 2px;
-      color: #FFD700;
-      text-transform: uppercase;
-      font-family: 'Bebas Neue', cursive;
-      text-shadow: 2px 2px #000;
-      border-bottom: 4px solid #FFD700;
-    }
-    nav {
-      background-color: #111;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    }
-    nav a {
-      color: #FFD700;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-      transition: transform 0.2s, color 0.2s;
-    }
-    nav a:hover {
-      color: #fff;
-      transform: scale(1.1);
-    }
-    section {
-      padding: 2.5rem;
-      border-bottom: 1px solid #333;
-    }
-    section h2 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2.5rem;
-      color: #FFD700;
-      text-shadow: 1px 1px #000;
-    }
-    .menu-item {
-      margin-bottom: 1.5rem;
-      border-left: 4px solid #FFD700;
-      padding: 0.5rem 1rem;
-      background-color: rgba(255, 255, 255, 0.05);
-      transition: background 0.3s;
-    }
-    .menu-item:hover {
-      background-color: rgba(255, 215, 0, 0.1);
-    }
-  </style>
+  <title>Upper Crust Pizza Café</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>Upper Crust</header>
-  <nav>
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#hours">Hours</a>
-    <a href="#gallery">Gallery</a>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">Upper Crust Pizza Café</a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section id="menu">
-    <h2>Menu</h2>
-    <div class="menu-item">
-      <strong>The OG Cheese</strong> – Simple. Pure. Iconic. $10
-    </div>
-    <div class="menu-item">
-      <strong>Pepperoni Rager</strong> – More pep than your playlist. $12
-    </div>
-    <div class="menu-item">
-      <strong>Dumpster Fire (Veggie)</strong> – Surprisingly not trash. $11
-    </div>
-    <div class="menu-item">
-      <strong>Meat Tornado</strong> – Brace your arteries. $14
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Authentic NY Style Pizza</h1>
+      <p>Take Out or Delivery</p>
+      <p>Call us: <a href="tel:4075661221">407-566-1221</a></p>
     </div>
   </section>
 
-  <!-- Remaining sections and chatbot go here -->
+  <!-- Additional content will go here -->
+
 </body>
 </html>
-   
+/* styles.css */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #c0392b;
+  text-decoration: none;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar .nav-links li {
+  margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: #c0392b;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('path-to-your-hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #c0392b;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+<!-- Menu Section -->
+<section id="menu" class="menu-section">
+  <div class="container">
+    <h2>Our Menu</h2>
+
+    <!-- Specialty Pizzas -->
+    <h3>Specialty Pizzas</h3>
+    <div class="menu-category">
+      <div class="menu-item">
+        <h4>Market Street Pie</h4>
+        <p>Our own hand-tossed traditional NY Style Cheese Pizza. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">10" - $10.00 | 14" - $16.00 | 18" - $18.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Sicilian Pizza</h4>
+        <p>A thick rectangular pan pizza. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">One Size - $21.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Cracker Thin Crust Pizza</h4>
+        <p>Well Done, Cut into Squares, Sauced to Edge/No Crust. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">One Size - $18.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Double Crust Stuffed Pizza</h4>
+        <p>Stuffed with Mozzarella Cheese and Pizza Sauce.</p>
+        <p class="price">14" - $18.50 | 18" - $22.50</p>
+      </div>
+      <div class="menu-item">
+        <h4>Garden Pizza</h4>
+        <p>Mushrooms, Onions, Peppers, Black Olives, Tomatoes. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Deli</h4>
+        <p>Pepperoni, Sausage, Ham, Meatball. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Meaty Combo</h4>
+        <p>Pepperoni, Sausage, Green Peppers, Red Onions. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Works</h4>
+        <p>Pepperoni, Sausage, Ham, Meatball, Mushrooms, Onions, Peppers, Olives, Tomatoes. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">10" - $14.00 | 14" - $23.00 | 18" - $27.50</p>
+      </div>
+      <div class="menu-item">
+        <h4>White</h4>
+        <p>Ricotta, Mozzarella Cheese.</p>
+        <p class="price">10" - $12.50 | 14" - $18.50 | 18" - $24.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Diego</h4>
+        <p>Ricotta, Fresh Tomatoes, Spinach. Mozzarella Cheese, Pizza Sauce.</p>
+        <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Hawaiian</h4>
+        <p>Ham, Bacon, Pineapple. Pizza Sauce.</p>
+        <p class="price">10" - $12.50 | 14" - $18.50 | 18" - $24.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>BBQ Chicken</h4>
+        <p>Roasted Chicken, Onion, Cheddar, Mozzarella Cheese, BBQ Sauce.</p>
+        <p class="price">10" - $13.00 | 14" - $18.50 | 18" - $24.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Blue Cheese Buffalo Chicken</h4>
+        <p>Crumbled Blue Cheese, Roasted Chicken, Buffalo Hot Sauce, Blue Cheese Dressing Base, Mozzarella Cheese.</p>
+        <p class="price">10" - $14.00 | 14" - $22.00 | 18" - $26.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Ranch Buffalo Chicken</h4>
+        <p>Roasted Chicken, Buffalo Hot Sauce, Ranch Base, Mozzarella Cheese.</p>
+        <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Margherita</h4>
+        <p>Olive Oil, Garlic, Fresh Tomatoes, Basil, Mozzarella Cheese.</p>
+        <p class="price">10" - $12.00 | 14" - $20.00 | 18" - $24.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Teriyaki Chicken</h4>
+        <p>Sweet Onion, Roasted Chicken Breast, Mozzarella Cheese.</p>
+        <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Alfredo Chicken</h4>
+        <p>Roasted Chicken, Alfredo Sauce, Mozzarella Cheese.</p>
+        <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</
+::contentReference[oaicite:3]{index=3}
+       </div> <!-- End Specialty Pizzas -->
+    </div>
+
+    <!-- Calzones & Subs -->
+    <h3>Calzones & Subs</h3>
+    <div class="menu-category">
+      <div class="menu-item">
+        <h4>Cheese Calzone</h4>
+        <p>Ricotta, Mozzarella, and Parmesan. Includes Marinara Sauce.</p>
+        <p class="price">One Size - $10.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Stromboli</h4>
+        <p>Cheese, Pepperoni, and Sausage in Pizza Dough. Includes Marinara Sauce.</p>
+        <p class="price">One Size - $12.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Italian Sub</h4>
+        <p>Ham, Pepperoni, Salami, Provolone, Lettuce, Tomato, Onion, Italian Dressing.</p>
+        <p class="price">$8.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Meatball Parm Sub</h4>
+        <p>Meatballs, Marinara, Mozzarella.</p>
+        <p class="price">$8.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Chicken Parm Sub</h4>
+        <p>Fried Chicken Breast, Marinara, Mozzarella.</p>
+        <p class="price">$8.00</p>
+      </div>
+    </div>
+
+    <!-- Wings & Salads -->
+    <h3>Wings & Salads</h3>
+    <div class="menu-category">
+      <div class="menu-item">
+        <h4>Buffalo Wings</h4>
+        <p>Hot, Mild, Teriyaki, or BBQ. Served with Blue Cheese or Ranch.</p>
+        <p class="price">6 pcs - $9.00 | 12 pcs - $16.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>House Salad</h4>
+        <p>Mixed Greens, Tomato, Onion, Black Olives, Croutons, Cheese.</p>
+        <p class="price">Small - $5.00 | Large - $8.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Caesar Salad</h4>
+        <p>Romaine, Parmesan, Croutons, Caesar Dressing.</p>
+        <p class="price">Small - $5.00 | Large - $8.00</p>
+      </div>
+    </div>
+
+    <!-- Appetizers -->
+    <h3>Appetizers</h3>
+    <div class="menu-category">
+      <div class="menu-item">
+        <h4>Garlic Knots</h4>
+        <p>Served with Marinara Sauce.</p>
+        <p class="price">6 pcs - $4.00 | 12 pcs - $7.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Cheese Bread</h4>
+        <p>Fresh baked bread with melted cheese. Includes Marinara.</p>
+        <p class="price">$6.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>French Fries</h4>
+        <p>Golden and crispy.</p>
+        <p class="price">$4.00</p>
+      </div>
+    </div>
+
+    <!-- Beverages -->
+    <h3>Beverages</h3>
+    <div class="menu-category">
+      <div class="menu-item">
+        <h4>Soda</h4>
+        <p>Pepsi, Diet Pepsi, Sierra Mist, Dr. Pepper, Mountain Dew</p>
+        <p class="price">$2.00</p>
+      </div>
+      <div class="menu-item">
+        <h4>Bottled Water</h4>
+        <p>$1.50</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About Section -->
+<section id="about" class="about-section">
+  <div class="container">
+    <h2>About Us</h2>
+    <p>
+      Upper Crust Pizza Café is a locally owned and operated New York-style pizzeria located in the heart of Celebration, Florida. 
+      We pride ourselves on using fresh ingredients, handcrafted dough, and authentic recipes passed down through generations.
+    </p>
+    <p>
+      Whether you're grabbing a quick slice, sitting down with family, or picking up food for your next event, we’ve got you covered.
+    </p>
+    <p>
+      We’re not a chain—we’re a neighborhood staple.
+    </p>
+  </div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>
+      📍 <strong>Address:</strong> 606 Market Street, Celebration, Florida 34747, United States
+    </p>
+    <p>
+      ☎️ <strong>Phone:</strong> <a href="tel:4075661221">407-566-1221</a>
+    </p>
+    <p>
+      🕒 <strong>Hours:</strong> Open daily from 11:00 am to 10:00 pm
+    </p>
+    <p>
+      📸 <strong>Follow us:</strong>
+      <a href="https://www.facebook.com/uppercrustpizzacafe" target="_blank">Facebook</a> |
+      <a href="https://www.instagram.com/uppercrustpizzacafe/" target="_blank">Instagram</a>
+    </p>
+  </div>
+</section>
+

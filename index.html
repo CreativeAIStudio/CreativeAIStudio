@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const animationFadeUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: "easeOut" }
+  transition: { duration: 0.8, ease: "easeOut" },
 };
 
+const Navbar = () => (
+  <header className="fixed top-0 w-full z-50 bg-white bg-opacity-90 backdrop-blur-md shadow-sm">
+    <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 className="text-xl font-bold text-gray-800">Upper Crust</h1>
+      <ul className="flex space-x-6 text-sm font-medium text-gray-700">
+        <li><a href="#menu" className="hover:text-yellow-500">Menu</a></li>
+        <li><a href="#about" className="hover:text-yellow-500">About</a></li>
+        <li><a href="#visit" className="hover:text-yellow-500">Visit</a></li>
+        <li><a href="#reviews" className="hover:text-yellow-500">Reviews</a></li>
+        <li><a href="#order" className="hover:text-yellow-500">Order</a></li>
+        <li><a href="#contact" className="hover:text-yellow-500">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+);
+
 const Hero = () => (
-  <section className="relative bg-fixed bg-center bg-cover h-screen flex items-center justify-center text-white text-center px-4" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?pizza')" }}>
+  <section className="relative bg-fixed bg-center bg-cover h-screen flex items-center justify-center text-white text-center px-4 pt-20" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?pizza')" }}>
     <div className="absolute inset-0 bg-black opacity-60"></div>
     <motion.div {...animationFadeUp} className="relative z-10 max-w-2xl">
       <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg">Welcome to Upper Crust</h1>
@@ -19,106 +35,61 @@ const Hero = () => (
 );
 
 const menuItems = [
-  {
-    title: "Classic Pepperoni",
-    img: "pepperoni-pizza",
-    desc: "Loaded with spicy pepperoni and melty mozzarella."
-  },
-  {
-    title: "Garden Veggie",
-    img: "veggie-pizza",
-    desc: "Fresh bell peppers, onions, olives and mushrooms."
-  },
-  {
-    title: "Margherita",
-    img: "margherita-pizza",
-    desc: "Fresh basil, tomato, and mozzarella on our signature crust."
-  }
+  { id: 1, title: "Classic Pepperoni", price: 12, img: "pepperoni-pizza", desc: "Spicy pepperoni & mozzarella.", tags: ["meat"] },
+  { id: 2, title: "Garden Veggie", price: 11, img: "veggie-pizza", desc: "Bell peppers, olives & mushrooms.", tags: ["vegetarian"] },
+  { id: 3, title: "Margherita", price: 10, img: "margherita-pizza", desc: "Basil, tomato & mozzarella.", tags: ["vegetarian"] },
+  { id: 4, title: "Vegan Delight", price: 13, img: "vegan-pizza", desc: "Plant-based cheese, veggies & love.", tags: ["vegan"] },
+  { id: 5, title: "Gluten-Free Supreme", price: 14, img: "glutenfree-pizza", desc: "Gluten-free crust with full flavor.", tags: ["gluten-free"] }
 ];
 
-const Menu = () => (
-  <section id="menu" className="py-20 bg-gray-50">
-    <div className="max-w-6xl mx-auto px-4">
-      <motion.h2 {...animationFadeUp} className="text-4xl font-bold text-center mb-12">Our Favorites</motion.h2>
-      <div className="grid md:grid-cols-3 gap-10">
-        {menuItems.map((item, idx) => (
-          <motion.div 
-            key={item.title} 
-            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
-            whileHover={{ scale: 1.03 }}
-          >
-            <img src={`https://source.unsplash.com/400x300/?${item.img}`} alt={item.title} className="w-full h-60 object-cover" />
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-              <p className="text-gray-700 text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
+const Menu = ({ onAddToCart }) => {
+  const [filter, setFilter] = useState("all");
+  const filteredItems = filter === "all" ? menuItems : menuItems.filter(item => item.tags.includes(filter));
+  const tagColors = {
+    "vegetarian": "bg-green-100 text-green-800",
+    "vegan": "bg-purple-100 text-purple-800",
+    "gluten-free": "bg-pink-100 text-pink-800",
+    "meat": "bg-red-100 text-red-800"
+  };
 
-const About = () => (
-  <section className="py-20 bg-white">
-    <motion.div {...animationFadeUp} className="max-w-4xl mx-auto px-4 text-center">
-      <h2 className="text-4xl font-bold mb-6">Our Story</h2>
-      <p className="text-lg text-gray-700 leading-relaxed">
-        Upper Crust began with a dream—to bring true artisan pizza to our neighborhood.
-        We combine age-old techniques with bold new flavors, all baked in our wood-fired ovens.
-        Whether you’re grabbing a slice or celebrating something special, we’re honored to serve you.
-      </p>
-    </motion.div>
-  </section>
-);
-
-const VisitUs = () => (
-  <section className="py-16 bg-yellow-100 text-center">
-    <motion.div {...animationFadeUp}>
-      <h2 className="text-3xl font-bold mb-4">Visit Us</h2>
-      <p className="text-lg mb-2">123 Brick Oven Lane, Crustville</p>
-      <p className="text-lg">Mon–Sat: 11am – 10pm | Sun: Closed</p>
-    </motion.div>
-  </section>
-);
-
-const ContactForm = () => (
-  <section className="py-20 bg-white">
-    <motion.div {...animationFadeUp} className="max-w-2xl mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
-      <form className="space-y-5">
-        <input type="text" placeholder="Your Name" required className="w-full border border-gray-300 rounded-lg p-4 focus:ring-2 focus:ring-yellow-400 focus:outline-none" />
-        <input type="email" placeholder="Your Email" required className="w-full border border-gray-300 rounded-lg p-4 focus:ring-2 focus:ring-yellow-400 focus:outline-none" />
-        <textarea placeholder="Your Message" rows="5" required className="w-full border border-gray-300 rounded-lg p-4 focus:ring-2 focus:ring-yellow-400 focus:outline-none"></textarea>
-        <button type="submit" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-full transition w-full shadow-md">Send Message</button>
-      </form>
-    </motion.div>
-  </section>
-);
-
-const Footer = () => (
-  <footer className="bg-gray-900 text-white py-10">
-    <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-      <p className="text-sm">&copy; 2025 Upper Crust. All rights reserved.</p>
-      <div className="flex space-x-6 mt-4 md:mt-0">
-        <a href="#" className="hover:underline text-sm">Instagram</a>
-        <a href="#" className="hover:underline text-sm">Facebook</a>
-        <a href="#" className="hover:underline text-sm">Contact</a>
-      </div>
-    </div>
-  </footer>
-);
-
-export default function App() {
   return (
-    <main className="font-sans bg-white text-gray-800">
-      <Hero />
-      <Menu />
-      <About />
-      <VisitUs />
-      <ContactForm />
-      <Footer />
-    </main>
+    <section id="menu" className="py-20 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.h2 {...animationFadeUp} className="text-4xl font-bold text-center mb-6">Our Favorites</motion.h2>
+        <div className="flex justify-center space-x-4 mb-10">
+          {['all', 'vegetarian', 'vegan', 'gluten-free'].map(type => (
+            <button
+              key={type}
+              onClick={() => setFilter(type)}
+              className={`px-4 py-2 rounded-full font-medium text-sm border ${filter === type ? 'bg-yellow-500 text-black' : 'bg-white text-gray-700'} hover:bg-yellow-400`}
+            >
+              {type.charAt(0).toUpperCase() + type.slice(1)}
+            </button>
+          ))}
+        </div>
+        <div className="grid md:grid-cols-3 gap-10">
+          {filteredItems.map((item) => (
+            <motion.div key={item.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition" whileHover={{ scale: 1.03 }}>
+              <div className="relative">
+                <img loading="lazy" src={`https://source.unsplash.com/400x300/?${item.img}`} alt={item.title} className="w-full h-60 object-cover" />
+                <div className="absolute top-2 left-2 flex flex-wrap gap-2">
+                  {item.tags.map(tag => (
+                    <span key={tag} className={`text-xs px-2 py-1 rounded-full font-semibold ${tagColors[tag]}`}>{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-700 text-sm mb-2">{item.desc}</p>
+                <div className="flex justify-between items-center">
+                  <span className="font-semibold text-yellow-600 text-lg">${item.price}</span>
+                  <button onClick={() => onAddToCart(item)} className="text-sm px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-black rounded-full font-medium">Add to Cart</button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
-}
-
+};

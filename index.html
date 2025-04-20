@@ -1,95 +1,226 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upper Crust Pizza</title>
+  <meta name="description" content="Upper Crust Pizza – Authentic NY‑style pies, made fresh daily. Order online or visit us today.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?
+    family=Lora:wght@400;700&
+    family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ========== RESET & VARIABLES ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --clr-primary: #d35400;
+      --clr-secondary: #c0392b;
+      --clr-text: #2c3e50;
+      --clr-bg: #fff;
+      --ff-heading: 'Lora', serif;
+      --ff-body: 'Montserrat', sans-serif;
+    }
+    body {
+      font-family: var(--ff-body);
+      color: var(--clr-text);
+      line-height: 1.6;
+      background: var(--clr-bg);
+    }
+    img { max-width: 100%; display: block; }
 
-const animationFadeUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: "easeOut" },
-};
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: sticky; top: 0; width: 100%;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(5px);
+      z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      max-width: 1200px; margin: auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem;
+    }
+    .logo { font-family: var(--ff-heading); font-size: 1.5rem; color: var(--clr-primary); text-decoration: none; }
+    .nav-links {
+      display: flex; gap: 1.5rem;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--clr-text); font-weight: 600;
+    }
+    .menu-toggle {
+      display: none; font-size: 1.5rem; cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; background: var(--clr-bg); width: 100%; }
+      .nav-links.show { display: flex; }
+      .menu-toggle { display: block; }
+    }
 
-const Navbar = () => (
-  <header className="fixed top-0 w-full z-50 bg-white bg-opacity-90 backdrop-blur-md shadow-sm">
-    <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 className="text-xl font-bold text-gray-800">Upper Crust</h1>
-      <ul className="flex space-x-6 text-sm font-medium text-gray-700">
-        <li><a href="#menu" className="hover:text-yellow-500">Menu</a></li>
-        <li><a href="#about" className="hover:text-yellow-500">About</a></li>
-        <li><a href="#visit" className="hover:text-yellow-500">Visit</a></li>
-        <li><a href="#reviews" className="hover:text-yellow-500">Reviews</a></li>
-        <li><a href="#order" className="hover:text-yellow-500">Order</a></li>
-        <li><a href="#contact" className="hover:text-yellow-500">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-);
+    /* ========== HERO ========== */
+    .hero {
+      height: 100vh; background: url('hero-pizza.jpg') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative; color: #fff;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero-content {
+      position: relative; z-index: 1; max-width: 600px;
+    }
+    .hero-content h1 {
+      font-family: var(--ff-heading); font-size: 3rem; margin-bottom: 1rem;
+    }
+    .btn-primary {
+      display: inline-block; padding: 0.75rem 1.5rem;
+      background: var(--clr-secondary); color: #fff;
+      font-weight: 600; border: none; border-radius: 4px;
+      text-decoration: none; transition: background 0.3s;
+    }
+    .btn-primary:hover { background: var(--clr-primary); }
 
-const Hero = () => (
-  <section className="relative bg-fixed bg-center bg-cover h-screen flex items-center justify-center text-white text-center px-4 pt-20" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?pizza')" }}>
-    <div className="absolute inset-0 bg-black opacity-60"></div>
-    <motion.div {...animationFadeUp} className="relative z-10 max-w-2xl">
-      <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg">Welcome to Upper Crust</h1>
-      <p className="text-xl mb-6 font-light">Authentic, wood-fired goodness served fresh every day.</p>
-      <a href="#menu" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-8 rounded-full transition shadow-lg">Explore Menu</a>
-    </motion.div>
+    /* ========== MENU ========== */
+    #menu { padding: 4rem 1rem; max-width: 1200px; margin: auto; }
+    #menu h2 {
+      font-family: var(--ff-heading); font-size: 2.5rem; text-align: center; margin-bottom: 2rem;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .menu-item {
+      background: #fafafa; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.3s;
+    }
+    .menu-item:hover { transform: translateY(-5px); }
+    .menu-item img { width: 100%; height: 200px; object-fit: cover; }
+    .menu-desc {
+      padding: 1rem;
+    }
+    .menu-desc h3 {
+      margin-bottom: 0.5rem; font-family: var(--ff-heading);
+    }
+    .price { font-weight: 600; color: var(--clr-secondary); }
+
+    /* ========== ABOUT ========== */
+    #about {
+      background: #f8f8f8; padding: 4rem 1rem; text-align: center;
+    }
+    #about h2 { font-family: var(--ff-heading); font-size: 2rem; margin-bottom: 1rem; }
+    #about p { max-width: 800px; margin: auto; }
+
+    /* ========== CONTACT ========== */
+    #contact { padding: 4rem 1rem; max-width: 600px; margin: auto; }
+    #contact h2 { font-family: var(--ff-heading); font-size: 2rem; text-align: center; margin-bottom: 1rem; }
+    form {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;
+      font-family: var(--ff-body);
+    }
+    button[type="submit"] {
+      align-self: center; padding: 0.75rem 2rem;
+      background: var(--clr-primary); color: #fff; border: none; border-radius: 4px;
+      font-weight: 600; cursor: pointer; transition: background 0.3s;
+    }
+    button[type="submit"]:hover { background: var(--clr-secondary); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #222; color: #aaa; text-align: center; padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--clr-secondary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">Upper Crust</a>
+      <span class="menu-toggle" id="menu-toggle">☰</span>
+      <div class="nav-links" id="nav-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#order" class="btn-primary">Order Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Upper Crust Pizza</h1>
+      <p>Authentic NY‑style pizzas, baked to perfection.</p>
+      <a href="#order" class="btn-primary">Order Now</a>
+    </div>
   </section>
-);
 
-const menuItems = [
-  { id: 1, title: "Classic Pepperoni", price: 12, img: "pepperoni-pizza", desc: "Spicy pepperoni & mozzarella.", tags: ["meat"] },
-  { id: 2, title: "Garden Veggie", price: 11, img: "veggie-pizza", desc: "Bell peppers, olives & mushrooms.", tags: ["vegetarian"] },
-  { id: 3, title: "Margherita", price: 10, img: "margherita-pizza", desc: "Basil, tomato & mozzarella.", tags: ["vegetarian"] },
-  { id: 4, title: "Vegan Delight", price: 13, img: "vegan-pizza", desc: "Plant-based cheese, veggies & love.", tags: ["vegan"] },
-  { id: 5, title: "Gluten-Free Supreme", price: 14, img: "glutenfree-pizza", desc: "Gluten-free crust with full flavor.", tags: ["gluten-free"] }
-];
-
-const Menu = ({ onAddToCart }) => {
-  const [filter, setFilter] = useState("all");
-  const filteredItems = filter === "all" ? menuItems : menuItems.filter(item => item.tags.includes(filter));
-  const tagColors = {
-    "vegetarian": "bg-green-100 text-green-800",
-    "vegan": "bg-purple-100 text-purple-800",
-    "gluten-free": "bg-pink-100 text-pink-800",
-    "meat": "bg-red-100 text-red-800"
-  };
-
-  return (
-    <section id="menu" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.h2 {...animationFadeUp} className="text-4xl font-bold text-center mb-6">Our Favorites</motion.h2>
-        <div className="flex justify-center space-x-4 mb-10">
-          {['all', 'vegetarian', 'vegan', 'gluten-free'].map(type => (
-            <button
-              key={type}
-              onClick={() => setFilter(type)}
-              className={`px-4 py-2 rounded-full font-medium text-sm border ${filter === type ? 'bg-yellow-500 text-black' : 'bg-white text-gray-700'} hover:bg-yellow-400`}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
-          ))}
-        </div>
-        <div className="grid md:grid-cols-3 gap-10">
-          {filteredItems.map((item) => (
-            <motion.div key={item.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition" whileHover={{ scale: 1.03 }}>
-              <div className="relative">
-                <img loading="lazy" src={`https://source.unsplash.com/400x300/?${item.img}`} alt={item.title} className="w-full h-60 object-cover" />
-                <div className="absolute top-2 left-2 flex flex-wrap gap-2">
-                  {item.tags.map(tag => (
-                    <span key={tag} className={`text-xs px-2 py-1 rounded-full font-semibold ${tagColors[tag]}`}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-700 text-sm mb-2">{item.desc}</p>
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold text-yellow-600 text-lg">${item.price}</span>
-                  <button onClick={() => onAddToCart(item)} className="text-sm px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-black rounded-full font-medium">Add to Cart</button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+  <!-- Menu -->
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="margherita.jpg" alt="Margherita Pizza">
+        <div class="menu-desc">
+          <h3>Margherita</h3>
+          <p>Fresh mozzarella, basil, and our signature tomato sauce.</p>
+          <p class="price">$12.99</p>
         </div>
       </div>
-    </section>
-  );
-};
+      <div class="menu-item">
+        <img src="pepperoni.jpg" alt="Pepperoni Pizza">
+        <div class="menu-desc">
+          <h3>Pepperoni</h3>
+          <p>Classic pepperoni, mozzarella, and our house blend of spices.</p>
+          <p class="price">$14.99</p>
+        </div>
+      </div>
+      <!-- Add more items as needed -->
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Born in the heart of NYC, Upper Crust Pizza brings traditional recipes and high‑quality ingredients
+      to your neighborhood. Our dough is hand‑tossed daily and baked in a stone oven for that perfect char.
+    </p>
+  </section>
+
+  <!-- Contact & Order -->
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Questions or Special Requests"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Upper Crust Pizza. All rights reserved.</p>
+    <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('menu-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>

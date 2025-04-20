@@ -1,735 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upper Crust Pizza Café</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      line-height: 1.6;
-      background-color: #fff;
-      color: #333;
-    }
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .navbar {
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .navbar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .navbar .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #c0392b;
-      text-decoration: none;
-    }
-    .navbar .nav-links {
-      list-style: none;
-      display: flex;
-    }
-    .navbar .nav-links li {
-      margin-left: 2rem;
-    }
-    .navbar .nav-links a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    .navbar .nav-links a:hover {
-      color: #c0392b;
-    }
-    .hero {
-      background-image: url('https://images.unsplash.com/photo-1601924582971-c3d4d4d2f38a');
-      background-size: cover;
-      background-position: center;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .hero-content {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 2rem 3rem;
-      border-radius: 10px;
-    }
-    .hero-content h1 {
-      font-size: 3rem;
-      color: #c0392b;
-      margin-bottom: 1rem;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #333;
-      margin-bottom: 0.5rem;
-    }
-    section {
-      padding: 4rem 2rem;
-    }
-    section h2 {
-      font-size: 2rem;
-      color: #c0392b;
-      margin-bottom: 1.5rem;
-    }
-    section h3 {
-      margin-top: 2rem;
-      color: #444;
-    }
-    .menu-category {
-      margin-bottom: 2rem;
-    }
-    .menu-item {
-      margin-bottom: 1.5rem;
-    }
-    .menu-item h4 {
-      color: #000;
-      margin-bottom: 0.25rem;
-    }
-    .menu-item p {
-      margin-bottom: 0.3rem;
-    }
-    .price {
-      font-weight: 600;
-      color: #444;
-    }
-    .contact-section a {
-      color: #c0392b;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .contact-section a:hover {
-      text-decoration: underline;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      object-fit: cover;
-      height: 200px;
-    }
-    footer {
-      background-color: #c0392b;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
-    }
-  </style>
-</head>
-<body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="#" class="logo">Upper Crust Pizza Café</a>
-      <ul class="nav-links">
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+import React from "react";
+import { motion } from "framer-motion";
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Authentic NY Style Pizza</h1>
-      <p>Take Out or Delivery</p>
-      <p>Call us: <a href="tel:4075661221">407-566-1221</a></p>
-    </div>
+const animationFadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: "easeOut" }
+};
+
+const Hero = () => (
+  <section className="relative bg-fixed bg-center bg-cover h-screen flex items-center justify-center text-white text-center px-4" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?pizza')" }}>
+    <div className="absolute inset-0 bg-black opacity-60"></div>
+    <motion.div {...animationFadeUp} className="relative z-10 max-w-2xl">
+      <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg">Welcome to Upper Crust</h1>
+      <p className="text-xl mb-6 font-light">Authentic, wood-fired goodness served fresh every day.</p>
+      <a href="#menu" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-8 rounded-full transition shadow-lg">Explore Menu</a>
+    </motion.div>
   </section>
+);
 
-  <!-- Full menu restored from earlier truncation (you can paste your full menu HTML back here) -->
-  <section id="menu" class="menu-section">
-    <div class="container">
-      <h2>Our Menu</h2>
-      <!-- Full menu items -->
-<h3>Specialty Pizzas</h3>
-<div class="menu-category">
-  <div class="menu-item">
-    <h4>Market Street Pie</h4>
-    <p>Our own hand-tossed traditional NY Style Cheese Pizza. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">10" - $10.00 | 14" - $16.00 | 18" - $18.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Sicilian Pizza</h4>
-    <p>A thick rectangular pan pizza. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">One Size - $21.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Cracker Thin Crust Pizza</h4>
-    <p>Well Done, Cut into Squares, Sauced to Edge/No Crust. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">One Size - $18.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Double Crust Stuffed Pizza</h4>
-    <p>Stuffed with Mozzarella Cheese and Pizza Sauce.</p>
-    <p class="price">14" - $18.50 | 18" - $22.50</p>
-  </div>
-  <div class="menu-item">
-    <h4>Garden Pizza</h4>
-    <p>Mushrooms, Onions, Peppers, Black Olives, Tomatoes. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Deli</h4>
-    <p>Pepperoni, Sausage, Ham, Meatball. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Meaty Combo</h4>
-    <p>Pepperoni, Sausage, Green Peppers, Red Onions. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Works</h4>
-    <p>Pepperoni, Sausage, Ham, Meatball, Mushrooms, Onions, Peppers, Olives, Tomatoes. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">10" - $14.00 | 14" - $23.00 | 18" - $27.50</p>
-  </div>
-  <div class="menu-item">
-    <h4>White</h4>
-    <p>Ricotta, Mozzarella Cheese.</p>
-    <p class="price">10" - $12.50 | 14" - $18.50 | 18" - $24.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Diego</h4>
-    <p>Ricotta, Fresh Tomatoes, Spinach. Mozzarella Cheese, Pizza Sauce.</p>
-    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Hawaiian</h4>
-    <p>Ham, Bacon, Pineapple. Pizza Sauce.</p>
-    <p class="price">10" - $12.50 | 14" - $18.50 | 18" - $24.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>BBQ Chicken</h4>
-    <p>Roasted Chicken, Onion, Cheddar, Mozzarella Cheese, BBQ Sauce.</p>
-    <p class="price">10" - $13.00 | 14" - $18.50 | 18" - $24.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Blue Cheese Buffalo Chicken</h4>
-    <p>Crumbled Blue Cheese, Roasted Chicken, Buffalo Hot Sauce, Blue Cheese Dressing Base, Mozzarella Cheese.</p>
-    <p class="price">10" - $14.00 | 14" - $22.00 | 18" - $26.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Ranch Buffalo Chicken</h4>
-    <p>Roasted Chicken, Buffalo Hot Sauce, Ranch Base, Mozzarella Cheese.</p>
-    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Margherita</h4>
-    <p>Olive Oil, Garlic, Fresh Tomatoes, Basil, Mozzarella Cheese.</p>
-    <p class="price">10" - $12.00 | 14" - $20.00 | 18" - $24.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Teriyaki Chicken</h4>
-    <p>Sweet Onion, Roasted Chicken Breast, Mozzarella Cheese.</p>
-    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
-  </div>
-  <div class="menu-item">
-    <h4>Alfredo Chicken</h4>
-    <p>Roasted Chicken, Alfredo Sauce, Mozzarella Cheese.</p>
-    <p class="price">10" - $13.00 | 14" - $21.00 | 18" - $25.00</p>
-  </div>
-</div>
-    </div>
-  </section>
+const menuItems = [
+  {
+    title: "Classic Pepperoni",
+    img: "pepperoni-pizza",
+    desc: "Loaded with spicy pepperoni and melty mozzarella."
+  },
+  {
+    title: "Garden Veggie",
+    img: "veggie-pizza",
+    desc: "Fresh bell peppers, onions, olives and mushrooms."
+  },
+  {
+    title: "Margherita",
+    img: "margherita-pizza",
+    desc: "Fresh basil, tomato, and mozzarella on our signature crust."
+  }
+];
 
-  <section id="about" class="about-section">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>
-        Upper Crust Pizza Café is a locally owned and operated New York-style pizzeria located in the heart of Celebration, Florida. 
-        We pride ourselves on using fresh ingredients, handcrafted dough, and authentic recipes passed down through generations.
-      </p>
-      <p>
-        Whether you're grabbing a quick slice, sitting down with family, or picking up food for your next event, we’ve got you covered.
-      </p>
-      <p>
-        We’re not a chain—we’re a neighborhood staple.
-      </p>
-    </div>
-  </section>
-
-  <section id="gallery" class="gallery-section">
-    <div class="container">
-      <h2>Gallery</h2>
-      <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1594007654729-e6053d2cfef3" alt="Pepperoni Pizza">
-        <img src="https://images.unsplash.com/photo-1548365328-13b222006d1b" alt="Pizza Oven">
-        <img src="https://images.unsplash.com/photo-1594007654820-863c2d9e26f3" alt="Cheesy Pizza Slice">
-        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f" alt="Pizzeria Interior">
+const Menu = () => (
+  <section id="menu" className="py-20 bg-gray-50">
+    <div className="max-w-6xl mx-auto px-4">
+      <motion.h2 {...animationFadeUp} className="text-4xl font-bold text-center mb-12">Our Favorites</motion.h2>
+      <div className="grid md:grid-cols-3 gap-10">
+        {menuItems.map((item, idx) => (
+          <motion.div 
+            key={item.title} 
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
+            whileHover={{ scale: 1.03 }}
+          >
+            <img src={`https://source.unsplash.com/400x300/?${item.img}`} alt={item.title} className="w-full h-60 object-cover" />
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   </section>
+);
 
-  <section id="contact" class="contact-section">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>
-        📍 <strong>Address:</strong> 606 Market Street, Celebration, Florida 34747, United States
+const About = () => (
+  <section className="py-20 bg-white">
+    <motion.div {...animationFadeUp} className="max-w-4xl mx-auto px-4 text-center">
+      <h2 className="text-4xl font-bold mb-6">Our Story</h2>
+      <p className="text-lg text-gray-700 leading-relaxed">
+        Upper Crust began with a dream—to bring true artisan pizza to our neighborhood.
+        We combine age-old techniques with bold new flavors, all baked in our wood-fired ovens.
+        Whether you’re grabbing a slice or celebrating something special, we’re honored to serve you.
       </p>
-      <p>
-        ☎️ <strong>Phone:</strong> <a href="tel:4075661221">407-566-1221</a>
-      </p>
-      <p>
-        🕒 <strong>Hours:</strong> Open daily from 11:00 am to 10:00 pm
-      </p>
-      <p>
-        📸 <strong>Follow us:</strong>
-        <a href="https://www.facebook.com/uppercrustpizzacafe" target="_blank">Facebook</a> |
-        <a href="https://www.instagram.com/uppercrustpizzacafe/" target="_blank">Instagram</a>
-      </p>
-    </div>
+    </motion.div>
   </section>
+);
 
-  <footer>
-    <p>&copy; 2024 Upper Crust Pizza Café. All rights reserved.</p>
+const VisitUs = () => (
+  <section className="py-16 bg-yellow-100 text-center">
+    <motion.div {...animationFadeUp}>
+      <h2 className="text-3xl font-bold mb-4">Visit Us</h2>
+      <p className="text-lg mb-2">123 Brick Oven Lane, Crustville</p>
+      <p className="text-lg">Mon–Sat: 11am – 10pm | Sun: Closed</p>
+    </motion.div>
+  </section>
+);
+
+const ContactForm = () => (
+  <section className="py-20 bg-white">
+    <motion.div {...animationFadeUp} className="max-w-2xl mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
+      <form className="space-y-5">
+        <input type="text" placeholder="Your Name" required className="w-full border border-gray-300 rounded-lg p-4 focus:ring-2 focus:ring-yellow-400 focus:outline-none" />
+        <input type="email" placeholder="Your Email" required className="w-full border border-gray-300 rounded-lg p-4 focus:ring-2 focus:ring-yellow-400 focus:outline-none" />
+        <textarea placeholder="Your Message" rows="5" required className="w-full border border-gray-300 rounded-lg p-4 focus:ring-2 focus:ring-yellow-400 focus:outline-none"></textarea>
+        <button type="submit" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-full transition w-full shadow-md">Send Message</button>
+      </form>
+    </motion.div>
+  </section>
+);
+
+const Footer = () => (
+  <footer className="bg-gray-900 text-white py-10">
+    <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p className="text-sm">&copy; 2025 Upper Crust. All rights reserved.</p>
+      <div className="flex space-x-6 mt-4 md:mt-0">
+        <a href="#" className="hover:underline text-sm">Instagram</a>
+        <a href="#" className="hover:underline text-sm">Facebook</a>
+        <a href="#" className="hover:underline text-sm">Contact</a>
+      </div>
+    </div>
   </footer>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aurora Chatbot</title>
-  <style>
-    #proworks-chat-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: radial-gradient(circle at top left, #00C6FF, #007BFF);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: none;
-      z-index: 9999;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: visible;
-      transition: transform 0.3s ease;
-    }
+);
 
-    .icon {
-      font-size: 24px;
-      color: white;
-      z-index: 2;
-    }
-
-    #proworks-chat-button::before {
-      content: '';
-      position: absolute;
-      width: 72px;
-      height: 72px;
-      border: 2px solid rgba(0,198,255,0.25);
-      border-radius: 50%;
-      box-shadow: 0 0 18px rgba(0,198,255,0.3);
-      transform: scale(0.85);
-      transition: all 0.4s ease;
-      z-index: 0;
-    }
-
-    #proworks-chat-button:hover::before {
-      transform: scale(1.2);
-      box-shadow: 0 0 30px rgba(0,198,255,0.7);
-      border-color: rgba(0,198,255,0.5);
-    }
-
-    #proworks-chat-button:hover {
-      transform: scale(1.1);
-    }
-
-    .swirl {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00ffd9, #1e90ff, #ff66cc);
-      filter: blur(2px);
-      animation: orbit 4s linear infinite;
-      opacity: 0.8;
-      z-index: 1;
-    }
-
-    .swirl:nth-child(2) { animation-delay: 0s; }
-    .swirl:nth-child(3) { animation-delay: 1s; }
-    .swirl:nth-child(4) { animation-delay: 2s; }
-    .swirl:nth-child(5) { animation-delay: 3s; }
-
-    @keyframes orbit {
-      0% { transform: rotate(0deg) translateX(36px) rotate(0deg); filter: hue-rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(36px) rotate(-360deg); filter: hue-rotate(360deg); }
-    }
-
-    .particle {
-      position: absolute;
-      opacity: 0;
-      z-index: 0;
-      pointer-events: none;
-      animation: none;
-    }
-
-    .particle.circle {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00ffcc, #3333ff, #ff66cc);
-      filter: blur(3px);
-    }
-
-    @keyframes burst {
-      0% { transform: translate(0, 0) scale(1); opacity: 1; filter: hue-rotate(0deg); }
-      100% { transform: translate(var(--tx), var(--ty)) scale(0.4) rotate(720deg); opacity: 0; filter: hue-rotate(360deg); }
-    }
-
-    .particle:nth-child(6) { --tx: -90px; --ty: -60px; }
-    .particle:nth-child(7) { --tx: 100px; --ty: -50px; }
-    .particle:nth-child(8) { --tx: 80px; --ty: 60px; }
-    .particle:nth-child(9) { --tx: -70px; --ty: 50px; }
-    .particle:nth-child(10) { --tx: -50px; --ty: -90px; }
-    .particle:nth-child(11) { --tx: 90px; --ty: 90px; }
-
-    #chat-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(2px);
-      z-index: 9997;
-    }
-
-    #proworks-chat-panel {
-      position: fixed;
-      bottom: 90px;
-      right: 5%;
-      width: 90vw;
-      max-width: 360px;
-      height: 75vh;
-      max-height: 520px;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-      overflow: hidden;
-      display: none;
-      flex-direction: column;
-      z-index: 9998;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    #chat-header {
-      background: linear-gradient(135deg, #007BFF, #00C6FF);
-      color: white;
-      padding: 18px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-      position: relative;
-    }
-
-    #chat-close {
-      position: absolute;
-      top: 12px;
-      left: 16px;
-      font-size: 20px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      z-index: 2;
-      transition: opacity 0.2s ease;
-    }
-
-    #chat-close:hover {
-      opacity: 0.7;
-    }
-
-    #chat-messages {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-      background: #f9f9f9;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .message {
-      margin: 8px 0;
-      line-height: 1.4;
-    }
-
-    .message.bot { text-align: left; }
-    .message.user { text-align: right; color: #007BFF; font-weight: 500; }
-
-    #suggestions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 10px;
-    }
-
-    .suggestion-btn {
-      background: #f1f1f1;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: left;
-      font-size: 14px;
-      transition: background 0.2s ease;
-    }
-
-    .suggestion-btn:hover {
-      background: #e0e0e0;
-    }
-
-    #chat-input {
-      display: flex;
-      border-top: 1px solid #ddd;
-    }
-
-    #chat-input input {
-      flex: 1;
-      border: none;
-      padding: 15px;
-      font-size: 14px;
-      outline: none;
-    }
-
-    #chat-input button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    #chat-input button:hover {
-      background: #005ecb;
-    }
-
-    @media (max-width: 480px) {
-      .swirl { display: none !important; }
-
-      #chat-input input { padding: 12px; font-size: 16px; }
-      #chat-input button { padding: 12px 16px; font-size: 16px; }
-      .suggestion-btn { font-size: 15px; padding: 12px; }
-      #chat-messages { padding: 12px; }
-    }
-
-    @media (max-width: 400px) {
-      #proworks-chat-panel {
-        width: 100vw;
-        height: 100vh;
-        bottom: 0;
-        right: 0;
-        border-radius: 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<!-- Overlay -->
-<div id="chat-overlay"></div>
-
-<!-- Chat Button -->
-<button id="proworks-chat-button">
-  <span class="icon">💬</span>
-  <div class="swirl"></div><div class="swirl"></div><div class="swirl"></div><div class="swirl"></div>
-  <div class="particle circle"></div><div class="particle circle"></div><div class="particle circle"></div>
-  <div class="particle circle"></div><div class="particle circle"></div><div class="particle circle"></div>
-</button>
-
-<!-- Chat Panel -->
-<div id="proworks-chat-panel">
-  <div id="chat-header">
-    👋 Welcome to ProworksAI
-    <div id="chat-close">×</div>
-  </div>
-  <div id="chat-messages">
-    <div class="message bot">Hi there! 👋 I’m your assistant from ProworksAI. Need help automating leads, answering FAQs, or integrating AI? Just ask away!</div>
-  </div>
-  <div id="suggestions">
-    <button class="suggestion-btn">What AI services do you offer?</button>
-    <button class="suggestion-btn">Can I automate lead collection?</button>
-    <button class="suggestion-btn">How do I get started?</button>
-    <button class="suggestion-btn">What questions can you answer?</button>
-  </div>
-  <div id="chat-input">
-    <input type="text" placeholder="Type your message..." />
-    <button>Send</button>
-  </div>
-</div>
-
-<!-- Script -->
-<script>
-  const chatBtn = document.getElementById('proworks-chat-button');
-  const chatPanel = document.getElementById('proworks-chat-panel');
-  const chatOverlay = document.getElementById('chat-overlay');
-  const chatMessages = document.getElementById('chat-messages');
-  const inputField = document.querySelector('#chat-input input');
-  const sendBtn = document.querySelector('#chat-input button');
-  const suggestionBtns = document.querySelectorAll('.suggestion-btn');
-  const closeBtn = document.getElementById('chat-close');
-
-  const STORAGE_KEY = 'proworks-chat-history';
-  let hasWelcomed = false;
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const history = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    if (history.length) {
-      history.forEach(msg => addMessage(msg.sender, msg.text, false));
-      hasWelcomed = true;
-    }
-  });
-
-  chatBtn.addEventListener('click', () => {
-    chatPanel.style.display = 'flex';
-    chatBtn.style.display = 'none';
-    chatOverlay.style.display = 'block';
-
-    if (hasWelcomed) {
-      setTimeout(() => {
-        const restoreMsg = "As you can see we have saved our old messages. If you would like to reset this conversation just say 'reset', and we'll take care of that for you.";
-        addMessage('bot', restoreMsg);
-      }, 500);
-      hasWelcomed = false;
-    }
-
-    const particles = chatBtn.querySelectorAll('.particle');
-    particles.forEach(p => {
-      p.style.animation = 'none';
-      p.offsetHeight;
-      p.style.animation = 'burst 1s ease-out forwards';
-    });
-  });
-
-  chatOverlay.addEventListener('click', closeChat);
-  closeBtn.addEventListener('click', closeChat);
-
-  function closeChat() {
-    chatPanel.style.display = 'none';
-    chatBtn.style.display = 'flex';
-    chatOverlay.style.display = 'none';
-  }
-
-  sendBtn.addEventListener('click', () => {
-    handleUserMessage(inputField.value.trim());
-  });
-
-  suggestionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      handleUserMessage(btn.textContent);
-    });
-  });
-
-  function handleUserMessage(message) {
-    if (!message) return;
-    addMessage('user', message);
-    inputField.value = '';
-
-    if (message.trim().toLowerCase() === 'reset') {
-      setTimeout(() => {
-        localStorage.removeItem(STORAGE_KEY);
-        chatMessages.innerHTML = '';
-        addMessage('bot', "Chat has been reset. How can I help you today?");
-      }, 500);
-      return;
-    }
-
-    setTimeout(() => {
-      const botReply = getBotResponse(message);
-      addMessage('bot', botReply);
-    }, 800);
-  }
-
-  function addMessage(sender, text, save = true) {
-    const msg = document.createElement('div');
-    msg.classList.add('message', sender);
-    msg.textContent = text;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    if (save) saveMessage(sender, text);
-  }
-
-  function saveMessage(sender, text) {
-    const history = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    history.push({ sender, text });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
-  }
-
-  function getBotResponse(msg) {
-    const text = msg.toLowerCase();
-
-    if (text.includes('what questions can you answer') || text.includes('what can you do')) {
-      return `Great question! Here’s what I can help you with:
-
-• Explain our AI services  
-• Automate your lead generation  
-• Show how to handle FAQs with bots  
-• Guide you through getting started  
-• Help you book a consultation  
-• Collect your contact info for follow-up  
-• Route your request to our team  
-
-Just ask about any of those or type your own question! 😊`;
-    }
-
-    if (text.includes('services')) {
-      return "We offer AI solutions like chatbot automation, smart lead capture, FAQ handling, and more — tailored for your business.";
-    }
-    if (text.includes('lead')) {
-      return "Absolutely! We can set up AI to collect, qualify, and even route leads straight to your CRM or inbox.";
-    }
-    if (text.includes('start') || text.includes('getting started')) {
-      return "Getting started is easy! We’ll walk you through a short onboarding to understand your business needs.";
-    }
-if (text.includes('how much') || text.includes('pricing') || text.includes('cost')) {
-  return "Great question! Our pricing is flexible to match your business goals. Whether you're a startup or scaling enterprise, we’ve got options designed to maximize ROI while staying affordable. Let’s chat about your needs and find the perfect plan.";
+export default function App() {
+  return (
+    <main className="font-sans bg-white text-gray-800">
+      <Hero />
+      <Menu />
+      <About />
+      <VisitUs />
+      <ContactForm />
+      <Footer />
+    </main>
+  );
 }
 
-if (text.includes('custom chatbot')) {
-  return "Absolutely! Custom is our specialty. We don't believe in one-size-fits-all. We'll tailor a chatbot to your business, your voice, and your objectives—because when it sounds like you and works for you, it closes more leads. Simple as that.";
-}
-
-if (text.includes('integrate') && text.includes('website')) {
-  return "You bet we can. Our chatbots integrate seamlessly with most modern websites—WordPress, custom HTML, Shopify, you name it. No tech headaches. We’ll get you live fast and make sure it runs smoothly.";
-}
-
-if (text.includes('schedule') && text.includes('consult')) {
-  return "Booking a consultation is quick and easy. Just let us know when you're free, and we’ll set up a discovery call. We'll show you how we can bring AI firepower to your business with real, measurable results.";
-}
-
-if (text.includes('industries') || text.includes('who do you serve')) {
-  return "We proudly serve a wide range of industries—from real estate, legal, healthcare, and e-commerce, to construction, home services, and retail. If you’ve got customers and conversations, we’ve got automation to match. No limits.";
-}
-    return "That's a great question! Let me forward it to a specialist who can assist you further. Feel free to drop your email too!";
-  }
-</script>
-
-</body>
-</html>

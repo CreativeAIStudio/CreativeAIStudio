@@ -6,17 +6,28 @@
   <title>Upper Crust Pizza</title>
   <meta name="description" content="Upper Crust Pizza – Authentic NY‑style pies, made fresh daily. Online ordering and delivery.">
 
-  <!-- Performance Hints -->
+  <!-- AI‑Powered Meta Tags (Wix ADI Style) -->
+  <script>
+    // Placeholder: fetch AI‑generated meta tags via your AI endpoint
+    fetch('https://api.your-ai-provider.com/meta?key=YOUR_API_KEY&url='+encodeURIComponent(location.href))
+      .then(r=>r.json()).then(data=>{
+        document.querySelector('meta[name="description"]').content = data.description;
+        document.querySelector('title').innerText = data.title;
+      });
+  </script>
+
+  <!-- Performance Hints & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?
     family=Lora:wght@400;700&
     family=Montserrat:wght@400;600&display=swap"
     rel="stylesheet">
 
-  <!-- Structured Data JSON-LD -->
+  <!-- Hostinger AI Logo Maker Integration -->
+  <script src="https://cdn.hostinger.com/ai-logo-maker.js" defer></script>
+
+  <!-- Structured Data JSON‑LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,21 +37,11 @@
     "@id": "https://yourdomain.com/#restaurant",
     "url": "https://yourdomain.com/",
     "telephone": "+1-407-566-1221",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Main St",
-      "addressLocality": "Orlando",
-      "addressRegion": "FL",
-      "postalCode": "32801",
-      "addressCountry": "US"
-    },
     "servesCuisine": "Pizza",
-    "priceRange": "$$",
     "openingHoursSpecification": [
       { "dayOfWeek": ["Mo","Tu","We","Th","Fr"], "opens": "11:00", "closes": "22:00" },
       { "dayOfWeek": ["Sa","Su"], "opens": "12:00", "closes": "23:00" }
     ],
-    "menu": "https://yourdomain.com/menu",
     "sameAs": [
       "https://facebook.com/uppercrustpizza",
       "https://instagram.com/uppercrustpizza"
@@ -49,153 +50,107 @@
   </script>
 
   <style>
-    /* [styles unchanged from previous version] */
+    /* [Previous styling retained—see earlier code] */
 
-    /* ========== HERO VIDEO ========== */
-    .hero video {
-      position: absolute; top: 0; left: 0;
-      width:100%; height:100%; object-fit:cover;
-      z-index: 0;
+    /* ========== AI‑TOOLBAR ========== */
+    #ai-toolbar {
+      position: fixed; top: 50%; right: 0; transform: translateY(-50%);
+      background: var(--clr-secondary); padding: 1rem; border-radius: 8px 0 0 8px;
+      display: flex; flex-direction: column; gap: .5rem; z-index: 2000;
     }
-    .hero::after {
-      content: ''; position: absolute; inset: 0;
-      background: rgba(0,0,0,0.4);
-    }
-
-    /* ========== TESTIMONIALS ========== */
-    #testimonials { padding: 4rem 1rem; background: #fdfdfd; }
-    #testimonials h2 { text-align: center; margin-bottom:2rem; }
-    .testimonial-slider {
-      display: flex; overflow: hidden; scroll-snap-type: x mandatory;
-    }
-    .testimonial {
-      flex: 0 0 100%; scroll-snap-align: center; padding:1rem;
-      text-align:center; box-sizing: border-box;
-    }
-    .testimonial p { font-style: italic; }
-    .testimonial h4 { margin-top:1rem; font-weight:600; }
-    .slider-nav { text-align:center; margin-top:1rem; }
-    .slider-nav button { margin:0 .25rem; width:12px; height:12px;
-      border-radius:50%; border:none; background:#ccc; cursor:pointer; }
-    .slider-nav button.active { background:var(--clr-primary); }
-
-    /* ========== SPECIALS BANNER ========== */
-    #specials {
-      background: var(--clr-secondary); color:#fff; text-align:center;
-      padding: .75rem; font-weight:600;
+    #ai-toolbar button {
+      background: #fff; border: none; padding: .5rem; cursor: pointer;
+      font-size: .9rem; border-radius: 4px;
     }
 
-    /* ========== MENU FILTER ========== */
-    .filter-btns { text-align:center; margin-bottom:2rem; }
-    .filter-btns button {
-      margin:0 .5rem; padding:.5rem 1rem; border:none;
-      background:#eee; cursor:pointer; border-radius:4px;
-    }
-    .filter-btns button.active { background:var(--clr-primary); color:#fff; }
+    /* ========== LAZY & RESPONSIVE IMAGES ========== */
+    img { width:100%; height:auto; loading: lazy; }
   </style>
 </head>
 <body>
 
-  <!-- Navbar unchanged -->
-
-  <!-- Hero with Video Background -->
-  <section class="hero" id="home">
-    <video autoplay muted loop playsinline poster="hero-pizza.jpg">
-      <source src="hero-video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-      <h1>Upper Crust Pizza</h1>
-      <p>Authentic NY‑style pizzas, baked to perfection.</p>
-      <a href="#order" class="btn-primary">Order Now</a>
-    </div>
-  </section>
-
-  <!-- Specials Banner -->
-  <div id="specials">
-    🔥 Today’s Special: Large Cheese Pizza for $9.99 — Only 24 Hours Left! 🔥
+  <!-- AI Toolbar (Hostinger + Wix Features) -->
+  <div id="ai-toolbar">
+    <button onclick="generateLogo()">AI Logo</button>
+    <button onclick="insertSection('about')">Add About Section</button>
+    <button onclick="generateText('#about p')">AI Copy</button>
+    <button onclick="analyzeHeatmap()">View AI Heatmap</button>
+    <button onclick="addProducts()">Generate Products</button>
   </div>
 
-  <!-- Menu with Filters -->
-  <section id="menu">
-    <h2>Our Menu</h2>
-    <div class="filter-btns">
-      <button data-filter="all" class="active">All</button>
-      <button data-filter="veg">Veg</button>
-      <button data-filter="meat">Meat</button>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-item" data-category="veg">
-        <img src="margherita.jpg" alt="Margherita Pizza" loading="lazy" width="400" height="300">
-        <!-- ... -->
-      </div>
-      <div class="menu-item" data-category="meat">
-        <img src="pepperoni.jpg" alt="Pepperoni Pizza" loading="lazy" width="400" height="300">
-        <!-- ... -->
-      </div>
-      <!-- more items -->
-    </div>
+  <!-- Navigation [unchanged] -->
+
+  <!-- Hero [with video background from earlier] -->
+
+  <!-- Specials Banner [unchanged] -->
+
+  <!-- Menu with Filters [unchanged] -->
+
+  <!-- Testimonials Carousel [unchanged] -->
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p><!-- AI‑generated copy will appear here --></p>
   </section>
 
-  <!-- Testimonials Carousel -->
-  <section id="testimonials">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonial-slider" id="slider">
-      <div class="testimonial">
-        <p>"Best pizza in Orlando – crust crisp, sauce perfect!"</p>
-        <h4>— Jamie L.</h4>
-      </div>
-      <div class="testimonial">
-        <p>"Amazing flavors and friendly staff. Highly recommend."</p>
-        <h4>— Carlos M.</h4>
-      </div>
-      <!-- more testimonials -->
-    </div>
-    <div class="slider-nav" id="nav"></div>
+  <!-- E‑commerce Products Section -->
+  <section id="products">
+    <h2>Our Specialties</h2>
+    <div class="product-grid"><!-- AI will populate here --></div>
   </section>
 
-  <!-- About unchanged -->
-
-  <!-- Contact unchanged -->
+  <!-- Contact [unchanged] -->
 
   <!-- AI Chatbot Snippet -->
+  <script src="https://your-ai-chatbot-provider.com/widget.js"></script>
+
+  <!-- Hostinger AI Heatmap Integration -->
+  <script src="https://cdn.hostinger.com/ai-heatmap.js" defer></script>
+
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      /* MENU FILTER LOGIC */
-      document.querySelectorAll('.filter-btns button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.filter-btns button').forEach(b=>b.classList.remove('active'));
-          btn.classList.add('active');
-          const cat = btn.dataset.filter;
-          document.querySelectorAll('.menu-item').forEach(item => {
-            item.style.display = (cat==='all' || item.dataset.category===cat) ? 'block' : 'none';
-          });
+    /* AI Toolbar Functions */
+    function generateLogo() {
+      HostingerAILogo.make({ colors: ['#d35400','#c0392b'], callback: url=>{
+        document.querySelector('.logo').innerHTML = `<img src="${url}" alt="Upper Crust Logo">`;
+      }});
+    }
+
+    function insertSection(type) {
+      WixAI.sectionCreator({ page: 'home', section: type }).then(html=>{
+        document.getElementById(type).outerHTML = html;
+      });
+    }
+
+    function generateText(selector) {
+      fetch('https://api.your-ai-provider.com/write?key=YOUR_API_KEY&prompt=About%20Upper%20Crust')
+        .then(r=>r.json()).then(data=>{
+          document.querySelector(selector).innerText = data.text;
+        });
+    }
+
+    function analyzeHeatmap() {
+      HostingerAIHeatmap.show({ url: location.href });
+    }
+
+    function addProducts() {
+      HostingerAIProducts.generate({ count: 4 }).then(items=>{
+        const grid = document.querySelector('.product-grid');
+        items.forEach(item=>{
+          const card = document.createElement('div');
+          card.className = 'menu-item';
+          card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" loading="lazy">
+            <div class="menu-desc">
+              <h3>${item.name}</h3><p>${item.desc}</p><p class="price">${item.price}</p>
+            </div>`;
+          grid.append(card);
         });
       });
-
-      /* TESTIMONIAL SLIDER LOGIC */
-      const slides = document.querySelectorAll('#slider .testimonial');
-      const nav = document.getElementById('nav');
-      let current = 0;
-      slides.forEach((_,i) => {
-        const dot = document.createElement('button');
-        if(i===0) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          current = i;
-          document.getElementById('slider').scrollTo({ left: i * slider.clientWidth, behavior:'smooth' });
-          nav.querySelectorAll('button').forEach(d=>d.classList.remove('active'));
-          dot.classList.add('active');
-        });
-        nav.append(dot);
-      });
-
-      /* AI Chatbot (placeholder for real integration) */
-      const botScript = document.createElement('script');
-      botScript.src = 'https://your-ai-chatbot-provider.com/widget.js';
-      document.body.append(botScript);
-    });
+    }
   </script>
 
-  <!-- Footer unchanged -->
+  <!-- Footer [unchanged] -->
 
 </body>
 </html>

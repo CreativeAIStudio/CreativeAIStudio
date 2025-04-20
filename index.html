@@ -1,156 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upper Crust Pizza</title>
-  <meta name="description" content="Upper Crust Pizza – Authentic NY‑style pies, made fresh daily. Online ordering and delivery.">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProWorks AI</title>
 
-  <!-- AI‑Powered Meta Tags (Wix ADI Style) -->
-  <script>
-    // Placeholder: fetch AI‑generated meta tags via your AI endpoint
-    fetch('https://api.your-ai-provider.com/meta?key=YOUR_API_KEY&url='+encodeURIComponent(location.href))
-      .then(r=>r.json()).then(data=>{
-        document.querySelector('meta[name="description"]').content = data.description;
-        document.querySelector('title').innerText = data.title;
-      });
-  </script>
+    <link rel="stylesheet" href="style.css">
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <!-- Performance Hints & Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?
-    family=Lora:wght@400;700&
-    family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet">
-
-  <!-- Hostinger AI Logo Maker Integration -->
-  <script src="https://cdn.hostinger.com/ai-logo-maker.js" defer></script>
-
-  <!-- Structured Data JSON‑LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Upper Crust Pizza",
-    "image": "https://yourdomain.com/hero-pizza.jpg",
-    "@id": "https://yourdomain.com/#restaurant",
-    "url": "https://yourdomain.com/",
-    "telephone": "+1-407-566-1221",
-    "servesCuisine": "Pizza",
-    "openingHoursSpecification": [
-      { "dayOfWeek": ["Mo","Tu","We","Th","Fr"], "opens": "11:00", "closes": "22:00" },
-      { "dayOfWeek": ["Sa","Su"], "opens": "12:00", "closes": "23:00" }
-    ],
-    "sameAs": [
-      "https://facebook.com/uppercrustpizza",
-      "https://instagram.com/uppercrustpizza"
-    ]
-  }
-  </script>
-
-  <style>
-    /* [Previous styling retained—see earlier code] */
-
-    /* ========== AI‑TOOLBAR ========== */
-    #ai-toolbar {
-      position: fixed; top: 50%; right: 0; transform: translateY(-50%);
-      background: var(--clr-secondary); padding: 1rem; border-radius: 8px 0 0 8px;
-      display: flex; flex-direction: column; gap: .5rem; z-index: 2000;
-    }
-    #ai-toolbar button {
-      background: #fff; border: none; padding: .5rem; cursor: pointer;
-      font-size: .9rem; border-radius: 4px;
-    }
-
-    /* ========== LAZY & RESPONSIVE IMAGES ========== */
-    img { width:100%; height:auto; loading: lazy; }
-  </style>
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!--Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!--animation-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
+
 <body>
+    <header class="header align-items-center sticky-top scrolled bg-light">
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="#">ProWorks AI</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link pe-3" href="#">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link pe-3" href="#about">About</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link pe-3" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link pe-3" href="#form">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center">
+                            <a href="#about" class="btn btn-primary text-white">Call Today!</a>
+                        </div>
+        </nav>
+    </div>
+</header>
 
-  <!-- AI Toolbar (Hostinger + Wix Features) -->
-  <div id="ai-toolbar">
-    <button onclick="generateLogo()">AI Logo</button>
-    <button onclick="insertSection('about')">Add About Section</button>
-    <button onclick="generateText('#about p')">AI Copy</button>
-    <button onclick="analyzeHeatmap()">View AI Heatmap</button>
-    <button onclick="addProducts()">Generate Products</button>
+    <main class="main">
+      <section id="hero" class="hero section text-white d-flex align-items-center" style="background: url('https://wallpaperaccess.com/full/1398313.jpg') center center / cover no-repeat;">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-12 d-flex flex-column justify-content-center text-center" data-aos="fade-up" style="background-color: rgba(0, 0, 0, 0.5); padding: 60px 20px; border-radius: 12px;">
+        <h1 class="fw-bold display-2">ProWorks AI</h1>
+        <h4 class="text-light mt-4">AI ProWorks is an innovative business specializing in selling and installing AI tools for businesses. We are dedicated to offering top-notch AI services with a focus on providing advanced solutions for your business needs. Contact us to take your business to the next level with AI!</h4>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- Navigation [unchanged] -->
 
-  <!-- Hero [with video background from earlier] -->
+        <section id="about" class="about section py-4 my-5">
 
-  <!-- Specials Banner [unchanged] -->
+            <div class="container aos-init aos-animate" data-aos="fade-up">
+                <div class="row gx-0 gap-4">
+                <h1 class="y text-center fw-bolder">About Us</h1>
+                    
 
-  <!-- Menu with Filters [unchanged] -->
+                    <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center aos-init aos-animate">
+                        <div class="content" data-aos="fade-up" data-aos-delay="200">
+                            <h2 class="fw-bold">Daniel McFadden</h2>
+                            
+                            <h5 class="text-secondary">
+                               My name is Daniel McFadden, I've worked making pizzas and remodling houses. But I've always been into technology so here I am. Born in New York, raised in Florida. Heres my favorite bible verse: 2 Timothy 4:7, “I have fought the good fight, I have finished the race, I have kept the faith.” It's nice to meet you.
+                            </h5>
+                            
+                           <p class="mt-4">
+    <a href="tel:4077854767" style="text-decoration: none; color: inherit;">Phone Number: <strong class="contact-link">(407)-785-4767</strong></a><br>
+    <a href="mailto:mcfaddendaniel@proworksai.com" style="text-decoration: none; color: inherit;">
+        Email: <strong class="contact-link">mcfaddendaniel@proworksai.com</strong>
+    </a>
+</p>
 
-  <!-- Testimonials Carousel [unchanged] -->
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p><!-- AI‑generated copy will appear here --></p>
-  </section>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 order-1 order-lg-2 d-flex align-items-center aos-init aos-animate">
+                        <img src="assets/img/Daniel.jpg" class="img-fluid rounded-circle" alt="" data-aos="zoom-in">
+                    </div>
 
-  <!-- E‑commerce Products Section -->
-  <section id="products">
-    <h2>Our Specialties</h2>
-    <div class="product-grid"><!-- AI will populate here --></div>
-  </section>
+                </div>
+                
+                <div class="row gx-0 gap-4 mt-5">
 
-  <!-- Contact [unchanged] -->
+                    <div class="col-lg-4 d-flex align-items-center aos-init aos-animate">
+                        <img src="assets/img/Braden.jpg" class="img-fluid rounded-circle" alt="" data-aos="zoom-in">
+                    </div>
 
-  <!-- AI Chatbot Snippet -->
-  <script src="https://your-ai-chatbot-provider.com/widget.js"></script>
+                    <div class="col-lg-7  d-flex flex-column justify-content-center aos-init aos-animate">
+                        <div class="content" data-aos="fade-up" data-aos-delay="200">
+                            <h2 class="fw-bold">Braden Kringle</h2>
+                            
+                            <h5 class="text-secondary">
+                              My name is Braden Kringle, I've worked in the service industry for my short time as an adult. I've always enjoyed talking to people and helping people. I was born in Colorado, but lived in Alaska and now Florida. My favorite bible verse is: Hebrews 13:8 "Jesus Christ is the same yesterday and today and forever."
+                            </h5>
+                            
+                            <p class="mt-4">
+    <a href="tel:4072852862" style="text-decoration: none; color: inherit;">Phone Number: <strong class="contact-link">(407)-285-2862</strong></a><br>
+    <a href="mailto:kringlebraden@proworksai.com" style="text-decoration: none; color: inherit;">
+        Email: <strong class="contact-link">kringlebraden@proworksai.com</strong>
+    </a>
+</p>
 
-  <!-- Hostinger AI Heatmap Integration -->
-  <script src="https://cdn.hostinger.com/ai-heatmap.js" defer></script>
+                           
+                        </div>
+                    </div>
+                    
+                    
 
-  <script>
-    /* AI Toolbar Functions */
-    function generateLogo() {
-      HostingerAILogo.make({ colors: ['#d35400','#c0392b'], callback: url=>{
-        document.querySelector('.logo').innerHTML = `<img src="${url}" alt="Upper Crust Logo">`;
-      }});
-    }
+                </div>
+            </div>
 
-    function insertSection(type) {
-      WixAI.sectionCreator({ page: 'home', section: type }).then(html=>{
-        document.getElementById(type).outerHTML = html;
-      });
-    }
+        </section>
 
-    function generateText(selector) {
-      fetch('https://api.your-ai-provider.com/write?key=YOUR_API_KEY&prompt=About%20Upper%20Crust')
-        .then(r=>r.json()).then(data=>{
-          document.querySelector(selector).innerText = data.text;
-        });
-    }
+        <section id="services" class="services section py-3 my-5">
 
-    function analyzeHeatmap() {
-      HostingerAIHeatmap.show({ url: location.href });
-    }
+            <!-- Section Title -->
+            <div class="container section-title aos-init aos-animate">
+                <h4>Our Services</h4>
+                
+            </div><!-- End Section Title -->
 
-    function addProducts() {
-      HostingerAIProducts.generate({ count: 4 }).then(items=>{
-        const grid = document.querySelector('.product-grid');
-        items.forEach(item=>{
-          const card = document.createElement('div');
-          card.className = 'menu-item';
-          card.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" loading="lazy">
-            <div class="menu-desc">
-              <h3>${item.name}</h3><p>${item.desc}</p><p class="price">${item.price}</p>
-            </div>`;
-          grid.append(card);
-        });
-      });
-    }
-  </script>
+            <div class="container">
+        <h2 class="h3 fw-bold mt-3 text-secondary">AI FAQ Chat Bot</h2>
+        <hr>
+        <h2 class="h3 fw-bold mt-3 text-secondary">AI Assistance for Consumer Support</h2>
+        <hr>
+        <h2 class="h3 fw-bold mt-3 text-secondary">AI Scheduling and Job Application</h2>
+        <hr>
+        <h2 class="h3 fw-bold mt-3 text-secondary">Website Remodeling</h2>
+        <hr>
+        <h2 class="h3 fw-bold mt-3 text-secondary">AI Installation for Our Product</h2>
+        <hr>
+        <h2 class="h3 fw-bold mt-3 text-secondary">Lead Generation</h2>
+        <hr>
+        <h2 class="h3 fw-bold mt-3 text-secondary">
+            Multitude of Other AI Tools to Make Day to Day Tasks Easier and More Efficient
+        </h2>
+        <hr>
+        <h2 class="h3 fw-bold mt-3 text-secondary"> 
+            Continued Assistance (troubleshooting) 
+            (keeping the service up to date, e.g., adding more FAQs as time goes on)
+        </h2>
+    </div>
+</section>
 
-  <!-- Footer [unchanged] -->
+        <section id="form" class="p-2">
+            <div class="container-frm text-white ">
+                <form id="myForm" action="formprocessor.php" method="POST" class="p-5">
+                    <div class="row align-items-center py-3">
 
+                        <div class="col-md-6 aos-init aos-animate" data-aos="zoom-out">
+                            <div class="cont" data-aos="zoom-in">
+                                <h2><strong>Ready to Invest in Yourself?!</strong></h2>
+                                <h4>Schedule a discovery call</h4>
+                            </div>
+                        </div>
+                        <div class="info col-md-6 mt-3" data-aos="fade-up"
+                        data-aos-duration="1000">
+
+                            <h5>Your Full Name</h5>
+                            <input type="text" class="form-control mb-3" name="name" id="name" placeholder="John Doe"
+                                required="">
+                            <h5>Email Address</h5>
+                            <input type="email" class="form-control mb-3" name="email" id="email"
+                                placeholder="name@example.com" required="">
+                            <h5>Number</h5>
+                            <input type="number" class="form-control" name="mobile_number" id="mobile_number"
+                                placeholder="123-456-7890" required="">
+                            <input type="hidden" name="ret_url" value="thank-you.html">
+                            <p>We'll never share your email with anyone else</p>
+                            <button class="btn btn-primary" id="submit-btn">Submit</button>
+                        </div>
+
+                        <div data-lastpass-icon-root=""
+                            style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    <section id="footer" class="mt-5">
+        <div class="container-fluid text-white text-center py-5">
+            <h3 class="fs-1 text">Have a general Inquiry?</h3>
+            <a href="#form"><button class="btn1 btn-primary fs-3 text btn-lg rounded-pill p-3" id="footer-btn">Speak To Our Team Today!</button></a>
+            <div class="mt-3 mb-3 row align-items-center">
+                <div class="col-md-12">
+                    <img src="Resources/cyberstone.webp" class="img-fluid" alt="">
+                </div>
+            </div>
+            <h4>ProWorks AI</h4>
+            <div class="mt-5">
+                
+                <div class="col-md-12">
+                    <span>All Rights Reserved | Copyright @ 2025
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+
+    </section>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+      once: true,
+    });
+  </script>
 </html>
